@@ -909,6 +909,595 @@ footer{
 
 .footer-links a{
   color:#f3dfb1;
+
+}/* =========================================
+   BURGUNDY → WHITE MOVING BACKGROUND
+   ========================================= */
+
+body{
+  position:relative;
+  color:#4b1824;
+
+  background:
+    linear-gradient(
+      115deg,
+      #651526 0%,
+      #651526 16%,
+      #7d2940 28%,
+      #a75c6c 40%,
+      #d9b5bb 52%,
+      #f0dfdf 63%,
+      #faf7f5 76%,
+      #ffffff 100%
+    );
+
+  background-size:180% 180%;
+  animation:burgundyWhiteFlow 20s ease-in-out infinite alternate;
+
+  overflow-x:hidden;
+}
+
+@keyframes burgundyWhiteFlow{
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:55% 45%;
+  }
+
+  100%{
+    background-position:100% 55%;
+  }
+}
+
+
+/* موجة نبيتي ناعمة في الخلفية */
+
+body::before{
+  content:"";
+  position:fixed;
+
+  inset:-15%;
+
+  z-index:-2;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse 55% 24% at 8% 30%,
+      rgba(101,21,38,.55),
+      rgba(101,21,38,.25) 35%,
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 45% 20% at 88% 70%,
+      rgba(101,21,38,.22),
+      transparent 70%
+    );
+
+  filter:blur(18px);
+
+  transform:rotate(-7deg);
+
+  animation:burgundyWave 16s ease-in-out infinite alternate;
+}
+
+@keyframes burgundyWave{
+
+  0%{
+    transform:
+      translate3d(-3%,1%,0)
+      rotate(-7deg)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate3d(3%,-1%,0)
+      rotate(-4deg)
+      scale(1.05);
+  }
+
+  100%{
+    transform:
+      translate3d(-1%,2%,0)
+      rotate(-8deg)
+      scale(1.02);
+  }
+}
+
+
+/* موجة بيضاء ناعمة بتتحرك فوق الخلفية */
+
+body::after{
+  content:"";
+
+  position:fixed;
+
+  inset:-20%;
+
+  z-index:-1;
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.70) 45%,
+      rgba(255,255,255,.38) 51%,
+      transparent 66%
+    ),
+
+    radial-gradient(
+      ellipse at 72% 35%,
+      rgba(255,255,255,.75),
+      transparent 42%
+    ),
+
+    radial-gradient(
+      ellipse at 35% 82%,
+      rgba(185,130,32,.08),
+      transparent 30%
+    );
+
+  background-size:
+    220% 220%,
+    100% 100%,
+    100% 100%;
+
+  animation:whiteSilkFlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes whiteSilkFlow{
+
+  0%{
+    background-position:
+      0% 50%,
+      0 0,
+      0 0;
+  }
+
+  100%{
+    background-position:
+      100% 45%,
+      0 0,
+      0 0;
+  }
+}
+
+
+/* نخلي الأقسام شفافة عشان الخلفية تظهر */
+
+section,
+main{
+  background:transparent;
+}
+
+
+/* الـHero ياخد نفس الخلفية */
+
+.hero-section{
+  background:transparent !important;
+}
+
+
+/* الصورة الموجودة في الـHero تكون خفيفة */
+
+.hero-section::before{
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(101,21,38,.20),
+      rgba(255,255,255,.42) 48%,
+      rgba(255,255,255,.82) 100%
+    ),
+
+    url("https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=2200&q=90")
+    center/cover;
+
+  opacity:.52;
+}
+
+
+/* نهاية الـHero تندمج مع الأبيض */
+
+.hero-section::after{
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 35%,
+      rgba(255,255,255,.72) 82%,
+      rgba(255,255,255,.92) 100%
+    );
+}
+
+
+/* =========================================
+   A1 / A2 / B1 / B2
+   White + Gold
+   ========================================= */
+
+.level-card{
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.97),
+      rgba(255,250,242,.93)
+    ) !important;
+}
+
+
+/* الكروت البيضاء تفضل واضحة فوق الخلفية */
+
+.quick-info div{
+
+  background:
+    rgba(255,255,255,.93);
+}
+
+
+/* البوكسات الكبيرة */
+
+.bundle-offer,
+.final-cta{
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(255,255,255,.95),
+      rgba(255,248,240,.90)
+    ) !important;
+}
+
+
+/* الفوتر نبيتي */
+
+footer{
+
+  background:
+    linear-gradient(
+      135deg,
+      #651526,
+      #7d2038,
+      #52111f
+    ) !important;
+}/* =====================================================
+   PREMIUM A1 / A2 / B1 / B2 CARDS
+   White + Gold + Burgundy + Subtle German Photos
+   ===================================================== */
+
+.level-card{
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.98),
+            rgba(255,249,239,.94)
+        ) !important;
+
+    border:1px solid rgba(185,130,32,.25) !important;
+
+    box-shadow:
+        0 18px 45px rgba(75,25,35,.10);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+
+
+/* ==========================================
+   الصورة الموجودة في خلفية الكارت
+   ========================================== */
+
+.level-card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:0;
+
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+
+    opacity:.12;
+
+    filter:
+        saturate(.65)
+        contrast(.90)
+        sepia(.12);
+
+    transform:scale(1.04);
+
+    transition:
+        opacity .5s ease,
+        transform .7s ease;
+
+    pointer-events:none;
+}
+
+
+/* ==========================================
+   طبقة White + Gold فوق الصورة
+   ========================================== */
+
+.level-card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 85% 12%,
+            rgba(215,163,61,.18),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.80),
+            rgba(255,250,242,.76)
+        );
+}
+
+
+/* المحتوى فوق كل حاجة */
+
+.level-card > *{
+    position:relative;
+    z-index:3;
+}
+
+
+/* ==========================================
+   A1
+   Neuschwanstein
+   ========================================== */
+
+.level-card:nth-child(1)::before{
+
+    background-image:
+        url("https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&w=1000&q=80");
+}
+
+
+/* ==========================================
+   A2
+   Berlin / German Architecture
+   ========================================== */
+
+.level-card:nth-child(2)::before{
+
+    background-image:
+        url("https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1000&q=80");
+}
+
+
+/* ==========================================
+   B1
+   Köln
+   ========================================== */
+
+.level-card:nth-child(3)::before{
+
+    background-image:
+        url("https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=1000&q=80");
+}
+
+
+/* ==========================================
+   B2
+   Hamburg
+   ========================================== */
+
+.level-card:nth-child(4)::before{
+
+    background-image:
+        url("https://images.unsplash.com/photo-1509460913899-515f1df34fea?auto=format&fit=crop&w=1000&q=80");
+}
+
+
+/* ==========================================
+   اختلاف بسيط في الـGold لكل كارت
+   ========================================== */
+
+.level-card:nth-child(1)::after{
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(215,163,61,.20),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.86),
+            rgba(255,249,237,.78)
+        );
+}
+
+
+.level-card:nth-child(2)::after{
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(201,145,43,.18),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.86),
+            rgba(252,247,237,.78)
+        );
+}
+
+
+.level-card:nth-child(3)::after{
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(185,130,32,.20),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.84),
+            rgba(250,244,233,.76)
+        );
+}
+
+
+.level-card:nth-child(4)::after{
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(171,111,28,.22),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.82),
+            rgba(248,240,229,.74)
+        );
+}
+
+
+/* ==========================================
+   النصوص
+   ========================================== */
+
+.level-card h3{
+    color:#651526 !important;
+}
+
+.level-card .level-description{
+    color:#6f6264;
+}
+
+.level-card .level-tag{
+    color:#806f71;
+}
+
+.level-card .level-price{
+    color:#bd831f !important;
+}
+
+
+/* ==========================================
+   A1 / A2 / B1 / B2 Badge
+   ========================================== */
+
+.level-badge{
+
+    color:#8b641b !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #e7c477
+        ) !important;
+
+    border:
+        1px solid rgba(185,130,32,.38);
+
+    box-shadow:
+        0 6px 18px rgba(185,130,32,.12);
+}
+
+
+/* ==========================================
+   معلومات الكارت
+   ========================================== */
+
+.level-info{
+    border-top-color:
+        rgba(101,21,38,.10) !important;
+}
+
+.level-info div{
+    border-bottom-color:
+        rgba(101,21,38,.08) !important;
+}
+
+.level-info span{
+    color:#817477 !important;
+}
+
+.level-info strong{
+    color:#5d1b28 !important;
+}
+
+
+/* ==========================================
+   زر تفاصيل أكثر
+   ========================================== */
+
+.level-card .level-btn{
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9aa4b,
+            #b98220
+        ) !important;
+
+    color:#fff !important;
+
+    border:
+        1px solid rgba(185,130,32,.40);
+
+    box-shadow:
+        0 8px 20px rgba(185,130,32,.15);
+}
+
+
+/* ==========================================
+   Hover
+   ========================================== */
+
+.level-card:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(185,130,32,.55) !important;
+
+    box-shadow:
+        0 28px 60px rgba(75,25,35,.16);
+}
+
+.level-card:hover::before{
+
+    opacity:.18;
+
+    transform:
+        scale(1.01);
 }
 </style>
 

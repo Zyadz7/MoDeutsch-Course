@@ -487,7 +487,429 @@ footer{padding:40px 0 110px;text-align:center;color:#81767a}
   transform:scale(1.035)!important;
   filter:saturate(1.03) contrast(1.04)!important;
 }
+/* ===== LIGHT WHITE + GOLD + BURGUNDY THEME ===== */
 
+:root{
+  --bg:#fbfaf7;
+  --bg2:#f5efe6;
+  --card:rgba(255,255,255,.94);
+
+  --text:#42131e;
+  --muted:#66585a;
+
+  --gold:#b98220;
+  --gold2:#d7a33d;
+
+  --burgundy:#651526;
+  --burgundy2:#8a2940;
+
+  --border:rgba(185,130,32,.24);
+
+  --green:#59b62d;
+  --blue:#2588e8;
+  --purple:#9143c7;
+
+  --shadow:0 18px 45px rgba(62,28,31,.12);
+}
+
+
+/* ===== BODY ===== */
+
+body{
+  color:var(--text);
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdfa 0%,
+      #fbf8f2 48%,
+      #f6eee5 100%
+    );
+}
+
+body::before{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.94),
+      rgba(255,255,255,.78)
+    ),
+    url("https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=2200&q=85")
+    center/cover no-repeat;
+
+  opacity:.22;
+}
+
+body::after{
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(101,21,38,.08),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 88% 8%,
+      rgba(185,130,32,.13),
+      transparent 25%
+    );
+}
+
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid rgba(185,130,32,.18);
+
+  box-shadow:
+    0 6px 25px rgba(62,28,31,.08);
+}
+
+.nav-links a{
+  color:#5a4144;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+.nav-cta{
+  color:var(--burgundy)!important;
+
+  border-color:rgba(185,130,32,.52);
+
+  background:rgba(185,130,32,.06);
+}
+
+
+/* ===== LOGO ===== */
+
+.logo{
+  color:var(--burgundy);
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+
+/* ===== HERO ===== */
+
+.hero-section{
+  background:#fffdf9;
+}
+
+.hero-section::before{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.74),
+      rgba(255,250,242,.82)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.96),
+      rgba(255,255,255,.56),
+      rgba(255,255,255,.90)
+    ),
+    url("https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=2200&q=90")
+    center/cover;
+
+  border-bottom:1px solid rgba(185,130,32,.16);
+}
+
+.hero-section::after{
+  background:
+    linear-gradient(
+      transparent,
+      #fffdf9
+    );
+}
+
+
+/* ===== HERO TEXT ===== */
+
+.badge{
+  color:var(--burgundy);
+
+  background:rgba(255,255,255,.88);
+
+  border-color:rgba(185,130,32,.42);
+
+  box-shadow:
+    0 8px 24px rgba(62,28,31,.08);
+}
+
+h1{
+  color:var(--burgundy);
+  text-shadow:none;
+}
+
+h1 span{
+  color:var(--gold);
+}
+
+.hero-text{
+  color:#514548;
+}
+
+
+/* ===== BUTTONS ===== */
+
+.btn-gold{
+  color:#fffaf1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d7a33d,
+      #a9751d
+    );
+
+  box-shadow:
+    0 10px 26px rgba(185,130,32,.20);
+}
+
+.btn-outline{
+  color:var(--burgundy);
+
+  background:rgba(255,255,255,.88);
+
+  border-color:rgba(185,130,32,.48);
+
+  box-shadow:
+    0 7px 22px rgba(62,28,31,.07);
+}
+
+
+/* ===== QUICK INFO ===== */
+
+.quick-info div{
+  background:rgba(255,255,255,.94);
+
+  border-color:rgba(185,130,32,.16);
+
+  box-shadow:
+    0 15px 35px rgba(62,28,31,.09);
+}
+
+.quick-info strong{
+  color:var(--burgundy);
+}
+
+.quick-info span{
+  color:#77686a;
+}
+
+
+/* ===== SECTIONS ===== */
+
+.eyebrow{
+  color:var(--gold);
+}
+
+.section-title{
+  color:var(--burgundy);
+  text-shadow:none;
+}
+
+.section-description{
+  color:#756568;
+}
+
+
+/* ===== LEVEL CARDS ===== */
+
+.level-card{
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255,255,255,.98),
+      rgba(249,244,237,.94)
+    );
+
+  border-color:rgba(185,130,32,.18);
+
+  box-shadow:
+    0 18px 45px rgba(62,28,31,.10);
+}
+
+.level-card::after{
+  background:
+    radial-gradient(
+      circle,
+      rgba(101,21,38,.10),
+      transparent 65%
+    );
+}
+
+.level-card:hover{
+  border-color:rgba(185,130,32,.48);
+
+  box-shadow:
+    0 28px 65px rgba(62,28,31,.14);
+}
+
+.level-card h3{
+  color:var(--burgundy);
+}
+
+.level-description{
+  color:#76686a;
+}
+
+.level-price{
+  color:var(--gold);
+}
+
+.level-price small{
+  color:#8a7a7a;
+}
+
+
+/* ===== LEVEL BADGES ===== */
+
+.level-badge{
+  color:#fffaf0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d7a33d,
+      #a9751d
+    );
+}
+
+.level-card:nth-child(even) .level-badge{
+  background:
+    linear-gradient(
+      135deg,
+      #8a2940,
+      #651526
+    );
+
+  color:#fff;
+}
+
+
+/* ===== LEVEL IMAGE ===== */
+
+.level-landmark{
+  border-color:rgba(185,130,32,.20);
+
+  box-shadow:
+    0 14px 30px rgba(62,28,31,.10);
+}
+
+
+/* ===== BUNDLE / PAYMENT ===== */
+
+.bundle-offer{
+  border-color:rgba(185,130,32,.35);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(101,21,38,.075),
+      rgba(185,130,32,.10)
+    ),
+    #fffdfa;
+
+  box-shadow:
+    0 18px 42px rgba(62,28,31,.09);
+}
+
+.bundle-offer h3{
+  color:var(--burgundy);
+}
+
+.bundle-offer p{
+  color:#76686a;
+}
+
+.bundle-offer span,
+.payment-note strong{
+  color:var(--gold);
+}
+
+.payment-note{
+  color:#6e6061;
+}
+
+
+/* ===== FAQ ===== */
+
+details{
+  background:rgba(255,255,255,.94);
+
+  border-color:rgba(101,21,38,.10);
+}
+
+details[open]{
+  border-color:rgba(185,130,32,.35);
+}
+
+summary{
+  color:var(--burgundy);
+}
+
+details p{
+  color:#76686a;
+}
+
+
+/* ===== GALLERY ===== */
+
+.gallery-item{
+  border-color:rgba(185,130,32,.18);
+
+  box-shadow:
+    0 18px 42px rgba(62,28,31,.10);
+}
+
+
+/* ===== FINAL CTA ===== */
+
+.final-cta{
+  border-color:rgba(185,130,32,.28);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(101,21,38,.08),
+      rgba(185,130,32,.10)
+    ),
+    rgba(255,255,255,.90);
+
+  box-shadow:
+    0 18px 45px rgba(62,28,31,.10);
+}
+
+.final-cta h2{
+  color:var(--burgundy);
+}
+
+.final-cta p{
+  color:#76686a;
+}
+
+
+/* ===== FOOTER ===== */
+
+footer{
+  background:
+    linear-gradient(
+      135deg,
+      #651526,
+      #7d2038
+    );
+
+  color:#f5dfaa;
+}
+
+.footer-links a{
+  color:#f3dfb1;
+}
 </style>
 
 </head>

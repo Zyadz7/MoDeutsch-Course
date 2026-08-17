@@ -1886,6 +1886,112 @@ body {
     .hero-actions .btn {
         width: 100% !important;
     }
+}/* ===== iPhone / Small Mobile Fix ===== */
+
+@media screen and (max-width: 600px) {
+
+    html {
+        width: 100%;
+        max-width: 100%;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: calc(100% - 28px) !important;
+        max-width: 100% !important;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+
+    .nav-inner {
+        min-height: 64px !important;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .dm-logo-image {
+        width: 64px !important;
+        height: 42px !important;
+    }
+
+    .theme-toggle {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 16px !important;
+    }
+
+    .hero-section {
+        min-height: auto !important;
+        padding: 70px 0 55px !important;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: clamp(34px, 9vw, 46px) !important;
+        line-height: 1.15 !important;
+    }
+
+    .hero-text {
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+        padding: 0 5px;
+    }
+
+    .hero-actions {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .hero-actions .btn {
+        width: 100% !important;
+        min-height: 58px;
+    }
+
+    .quick-info {
+        width: 100%;
+    }
+
+    .levels-grid {
+        grid-template-columns: 1fr !important;
+        width: 100%;
+    }
+
+    .level-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .gallery-grid {
+        width: 100%;
+        grid-template-columns: 1fr !important;
+    }
+
+    .final-cta {
+        width: 100%;
+    }
+
+    .faq {
+        width: 100%;
+    }
+
+    .fixed-whatsapp {
+        width: calc(100% - 28px) !important;
+        max-width: 500px;
+    }
 }
 </style>
 

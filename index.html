@@ -1967,8 +1967,8 @@ footer{
             <p>املأ بياناتك وسنتواصل معك لتأكيد الحجز.</p>
 
             <form class="booking-form" id="bookingForm">
-
-                <label>
+              <label>
+   
                     الاسم بالكامل
                     <input
                         type="text"
@@ -1999,6 +1999,31 @@ footer{
                         <option value="A1 + A2">A1 + A2 — خصم 10%</option>
                     </select>
                 </label>
+                <label>
+    هل الجروب والمعاد مناسب معاك/ي؟
+
+    <div style="margin-top:10px; display:flex; gap:20px; flex-wrap:wrap;">
+
+        <label style="font-weight:normal;">
+            <input
+                type="radio"
+                name="scheduleSuitable"
+                value="نعم"
+                required>
+            نعم، مناسب
+        </label>
+
+        <label style="font-weight:normal;">
+            <input
+                type="radio"
+                name="scheduleSuitable"
+                value="لا"
+                required>
+            لا، غير مناسب
+        </label>
+
+    </div>
+</label>
 
                 <label>
                     ملاحظات إضافية
@@ -2071,7 +2096,12 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     const level = document.getElementById("bookingLevel").value;
     const notes = document.getElementById("bookingNotes").value.trim();
 
-    if (!name || !phone || !level) {
+    const scheduleSuitable = document.querySelector(
+  'input[name="scheduleSuitable"]:checked'
+)?.value;
+
+    
+    if (!name || !phone || !level || !scheduleSuitable) {
         alert("من فضلك أكمل البيانات المطلوبة.");
         return;
     }
@@ -2089,15 +2119,45 @@ document.getElementById("bookingForm").addEventListener("submit", async function
                 "Content-Type": "text/plain;charset=utf-8"
             },
             body: JSON.stringify({
-                name: name,
-                phone: phone,
-                level: level,
-                notes: notes
+            name: name,
+            phone: phone,
+            level: level,
+            scheduleSuitable: scheduleSuitable,
+            notes: notes
             })
         });
+        if (scheduleSuitable === "نعم") {
 
-        document.getElementById("bookingContent").style.display = "none";
-        document.getElementById("bookingSuccess").classList.add("show");
+            document.getElementById("bookingContent").style.display = "none";
+
+            document.getElementById("bookingSuccess").innerHTML = `
+                <div style="font-size:50px;">✅</div>
+
+                <h3>تم تسجيل بياناتك بنجاح</h3>
+
+                <p>
+                    سيتم تحويلك الآن إلى InstaPay لإتمام الدفع.
+                </p>
+
+                <p style="color:#d8a83e;font-weight:bold">
+                    بعد التحويل، ابعت صورة التحويل على ماسنجر لتأكيد حجزك.
+                </p>
+            `;
+
+            document.getElementById("bookingSuccess").classList.add("show");
+
+            setTimeout(() => {
+                window.location.href =
+                    "https://ipn.eg/S/moashraf436/instapay/5wJaRY";
+            }, 2500);
+
+        } else {
+
+            document.getElementById("bookingContent").style.display = "none";
+            document.getElementById("bookingSuccess").classList.add("show");
+
+        }
+        
 
     } catch (error) {
         console.error(error);

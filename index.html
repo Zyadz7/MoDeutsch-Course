@@ -1498,6 +1498,118 @@ footer{
 
     transform:
         scale(1.01);
+}/* ===== BOOKING MODAL ===== */
+
+.booking-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.booking-overlay.active {
+    display: flex;
+}
+
+.booking-modal {
+    width: min(520px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(160deg, #171014, #0d090b);
+    border: 1px solid rgba(216, 168, 62, 0.35);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.65);
+    position: relative;
+}
+
+.booking-close {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.booking-modal h2 {
+    margin: 0 0 8px;
+    color: var(--gold2);
+}
+
+.booking-modal p {
+    color: var(--muted);
+}
+
+.booking-form {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.booking-form label {
+    font-size: 13px;
+    font-weight: 800;
+    color: #e8dfe1;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 7px;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.13);
+    background: #0b0809;
+    color: #fff;
+    font-family: inherit;
+    outline: none;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: rgba(216,168,62,.7);
+}
+
+.booking-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.booking-form input[type="checkbox"] {
+    width: auto;
+    margin-left: 7px;
+}
+
+.booking-submit {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.booking-success {
+    display: none;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+.booking-success.show {
+    display: block;
+}
+
+@media (max-width: 500px) {
+    .booking-modal {
+        padding: 25px 18px;
+    }
 }
 </style>
 
@@ -1513,8 +1625,11 @@ footer{
             <div class="nav-links"><a href="#levels">المستويات</a>
                 <a href="#germany">ألمانيا</a>
                 <a href="#faq">الأسئلة</a>
-                <a class="nav-cta" target="_blank"
-                   href="https://ipn.eg/S/moashraf436/instapay/5wJaRY" target="_blank" rel="noopener">💳 احجز الآن</a>
+                <button class="btn btn-gold"
+                        type="button"
+                        onclick="openBooking()">
+                    احجز الآن
+                </button>
             </div>
         </div>
     </nav>
@@ -1599,8 +1714,11 @@ footer{
                             🎁 احجز <strong>A1 + A2</strong> مع بعض واحصل على <strong>خصم 10%</strong>
                         </div>
 
-                        <a class="btn btn-gold level-btn" target="_blank"
-                           href="https://ipn.eg/S/moashraf436/instapay/5wJaRY" target="_blank" rel="noopener">💳 احجز الآن</a>
+                        <button class="btn btn-gold level-btn"
+                                type="button"
+                                onclick="openBooking('A1')">
+                            💳 احجز الآن
+                        </button>
                     </article>
 
                     <!-- A2 -->
@@ -1626,8 +1744,12 @@ footer{
                             <div><span>⏳ المدة</span><strong>لم يتم تحديدها</strong></div>
                         </div>
 
-                        <a class="btn btn-gold level-btn" target="_blank"
-                           href="https://ipn.eg/S/moashraf436/instapay/5wJaRY" target="_blank" rel="noopener">💳 احجز الآن</a>
+                        <button class="btn btn-gold level-btn"
+                                type="button"
+                                onclick="openBooking('A2')">
+                            💳 احجز الآن
+                        </button>
+                          
                     </article>
 
                     <!-- B1 -->
@@ -1652,9 +1774,13 @@ footer{
                             <div><span>🕐 الساعة</span><strong>لم يتم التحديد</strong></div>
                             <div><span>⏳ المدة</span><strong>لم يتم التحديد</strong></div>
                         </div>
-
-                        <a class="btn btn-gold level-btn" target="_blank"
-                           href="https://ipn.eg/S/moashraf436/instapay/5wJaRY" target="_blank" rel="noopener">💳 احجز الآن</a>
+                         <button class="btn btn-gold level-btn"
+                                  type="button"
+                                  onclick="openBooking('B1')">
+                              💳 احجز الآن
+                          </button>
+                        
+                           
                     </article>
 
 
@@ -1680,9 +1806,12 @@ footer{
                             <div><span>🕐 الساعة</span><strong>2 صباحاً</strong></div>
                             <div><span>⏳ المدة</span><strong>حوالي 3  شهور</strong></div>
                         </div>
-
-                        <a class="btn btn-gold level-btn" target="_blank"
-                           href="https://ipn.eg/S/moashraf436/instapay/5wJaRY" target="_blank" rel="noopener">💳 احجز الآن</a>
+                        <button class="btn btn-gold level-btn"
+                                type="button"
+                                onclick="openBooking('B2.1')">
+                            💳 احجز الآن
+                        </button>
+                        
                     </article>
 
                 </div>
@@ -1825,6 +1954,160 @@ footer{
        href="https://m.me/Mohamedashraf436?text=السلام%20عليكم،%20عايز%20أحجز%20مكان%20في%20أحد%20مستويات%20الألماني">
         💬 أرسل صورة التحويل الآن عبر ماسنجر
     </a>
+<!-- BOOKING MODAL -->
+<div class="booking-overlay" id="bookingOverlay">
+    <div class="booking-modal">
 
+        <button class="booking-close" type="button" onclick="closeBooking()">×</button>
+
+        <div id="bookingContent">
+
+            <h2>احجز مكانك 🇩🇪</h2>
+
+            <p>املأ بياناتك وسنتواصل معك لتأكيد الحجز.</p>
+
+            <form class="booking-form" id="bookingForm">
+
+                <label>
+                    الاسم بالكامل
+                    <input
+                        type="text"
+                        id="bookingName"
+                        name="name"
+                        placeholder="اكتب اسمك"
+                        required>
+                </label>
+
+                <label>
+                    رقم WhatsApp
+                    <input
+                        type="tel"
+                        id="bookingPhone"
+                        name="phone"
+                        placeholder="01xxxxxxxxx"
+                        required>
+                </label>
+
+                <label>
+                    المستوى
+                    <select id="bookingLevel" name="level" required>
+                        <option value="">اختر المستوى</option>
+                        <option value="A1">German A1</option>
+                        <option value="A2">German A2</option>
+                        <option value="B1">German B1</option>
+                        <option value="B2.1">German B2.1</option>
+                        <option value="A1 + A2">A1 + A2 — خصم 10%</option>
+                    </select>
+                </label>
+
+                <label>
+                    ملاحظات إضافية
+                    <textarea
+                        id="bookingNotes"
+                        name="notes"
+                        placeholder="مثلاً: أفضل المواعيد المسائية..."></textarea>
+                </label>
+
+                <label>
+                    <input type="checkbox" id="bookingConsent" required>
+                    أوافق على استخدام بياناتي للتواصل معي بخصوص الحجز.
+                </label>
+
+                <button class="btn btn-gold booking-submit" type="submit">
+                    إرسال طلب الحجز
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="booking-success" id="bookingSuccess">
+            <div style="font-size:50px;">✅</div>
+
+            <h3>تم تسجيل طلبك بنجاح</h3>
+
+            <p>
+                شكرًا لك! سنتواصل معك قريبًا لتأكيد الحجز.
+            </p>
+
+            <button class="btn btn-gold" onclick="closeBooking()">
+                إغلاق
+            </button>
+        </div>
+
+    </div>
+</div>
+<script>
+function openBooking(level = '') {
+    const overlay = document.getElementById('bookingOverlay');
+    const levelSelect = document.getElementById('bookingLevel');
+
+    overlay.classList.add('active');
+
+    if (level) {
+        levelSelect.value = level;
+    }
+}
+
+function closeBooking() {
+    document.getElementById('bookingOverlay').classList.remove('active');
+}
+
+// إغلاق الفورم عند الضغط خارج النافذة
+document.getElementById('bookingOverlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeBooking();
+    }
+});
+</script>
+<script>
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbyG8jKgNy2vKOnQNlQRDepta82oOawbLrvs0RHgl1cWF36xqhYi18AP8vVg1gq7hBYezg/exec";
+
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("bookingName").value.trim();
+    const phone = document.getElementById("bookingPhone").value.trim();
+    const level = document.getElementById("bookingLevel").value;
+    const notes = document.getElementById("bookingNotes").value.trim();
+
+    if (!name || !phone || !level) {
+        alert("من فضلك أكمل البيانات المطلوبة.");
+        return;
+    }
+
+    const button = this.querySelector(".booking-submit");
+
+    button.disabled = true;
+    button.textContent = "جاري تسجيل البيانات...";
+
+    try {
+        await fetch(GOOGLE_SHEET_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                level: level,
+                notes: notes
+            })
+        });
+
+        document.getElementById("bookingContent").style.display = "none";
+        document.getElementById("bookingSuccess").classList.add("show");
+
+    } catch (error) {
+        console.error(error);
+
+        alert("حدث خطأ أثناء تسجيل الحجز. حاول مرة أخرى.");
+
+        button.disabled = false;
+        button.textContent = "إرسال طلب الحجز";
+    }
+});
+</script>
 </body>
 </html>

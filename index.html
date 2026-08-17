@@ -2003,6 +2003,197 @@ body {
         max-width: 500px;
     }
 
+}/* ================================
+   INSTRUCTOR SECTION
+================================ */
+
+.instructor-section {
+    padding: 90px 0;
+}
+
+.instructor-card {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 50px;
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+/* Instructor Image */
+
+.instructor-image-wrap {
+    flex: 0 0 280px;
+    width: 280px;
+    height: 280px;
+}
+
+.instructor-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 5px solid #D4AF37;
+
+    box-shadow:
+        0 0 0 8px rgba(212, 175, 55, 0.10),
+        0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* Content */
+
+.instructor-content {
+    flex: 1;
+}
+
+.instructor-content .eyebrow {
+    margin-bottom: 10px;
+
+    color: #D4AF37;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.instructor-content h2 {
+    margin: 0 0 8px;
+
+    color: #7A1F2B;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+}
+
+.instructor-content h3 {
+    margin: 0 0 25px;
+
+    color: #D4AF37;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.instructor-content p {
+    margin-bottom: 16px;
+
+    line-height: 1.9;
+    font-size: 1rem;
+}
+
+.instructor-quote {
+    margin-top: 25px;
+    padding: 18px 22px;
+
+    border-right: 4px solid #D4AF37;
+    border-radius: 10px;
+
+    background: rgba(122, 31, 43, 0.08);
+
+    color: #7A1F2B;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+
+/* ================================
+   DARK MODE
+================================ */
+
+body.dark-mode .instructor-card {
+    background: rgba(255, 255, 255, 0.035);
+    border-color: rgba(212, 175, 55, 0.25);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .instructor-content h2 {
+    color: #D4AF37;
+}
+
+body.dark-mode .instructor-content h3 {
+    color: #E5C65A;
+}
+
+body.dark-mode .instructor-content p {
+    color: #E5E5E5;
+}
+
+body.dark-mode .instructor-quote {
+    background: rgba(212, 175, 55, 0.08);
+    color: #E5C65A;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+    .instructor-section {
+        padding: 60px 0;
+    }
+
+    .instructor-card {
+        flex-direction: column;
+        text-align: center;
+
+        gap: 30px;
+        padding: 35px 22px;
+    }
+
+    .instructor-image-wrap {
+        flex: none;
+        width: 210px;
+        height: 210px;
+    }
+
+    .instructor-content .eyebrow {
+        font-size: 0.75rem;
+    }
+
+    .instructor-content h2 {
+        font-size: 2rem;
+    }
+
+    .instructor-content h3 {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .instructor-content p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .instructor-quote {
+        text-align: center;
+    }
+}
+
+
+/* Smaller phones */
+
+@media (max-width: 480px) {
+
+    .instructor-card {
+        padding: 28px 18px;
+        border-radius: 22px;
+    }
+
+    .instructor-image-wrap {
+        width: 180px;
+        height: 180px;
+    }
+
+    .instructor-content h2 {
+        font-size: 1.8rem;
+    }
 }
 </style>
 
@@ -2068,7 +2259,63 @@ body {
                 <div><strong>10%</strong><span>خصم A1 + A2</span></div>
             </div>
         </div>
+       <!-- INSTRUCTOR -->
+<section class="instructor-section" id="instructor">
+    <div class="container">
+        <div class="instructor-card">
 
+            <div class="instructor-image-wrap">
+                <img
+                    src="images/Mohamed.jpg"
+                    alt="Mohamed Ashraf - German Language Instructor"
+                    class="instructor-image">
+            </div>
+
+            <div class="instructor-content">
+
+                <div class="eyebrow">ABOUT THE INSTRUCTOR</div>
+
+                <h2>Mohamed Ashraf</h2>
+
+                <h3>German Language Instructor & Kursleiter 🇩🇪</h3>
+
+                <p>
+                    أهلاً بيك، أنا محمد أشرف 🇩🇪
+                </p>
+
+                <p>
+                    أنا Kursleiter ومحاضر لغة ألمانية بخبرة أكتر من 3 سنين
+                    في تدريس الألماني، وخريج قسم اللغة الألمانية – كلية الألسن.
+                    حاصل على شهادة C1 في اللغة من ألمانيا، وحاصل على كورسات
+                    وشهادات متخصصة في تعليم اللغة الألمانية.
+                </p>
+
+                <p>
+                    وكمان شاركت في كورسات ودراسة في ألمانيا من خلال برامج أكاديمية،
+                    وده خلّاني أنقل للطلاب مش اللغة بس، لكن كمان الثقافة والحياة
+                    الحقيقية في ألمانيا 🇩🇪.
+                </p>
+
+                <p>
+                    اشتغلت مع طلاب بمستويات وأهداف مختلفة؛ من اللي بيبدأ من الصفر،
+                    لحد اللي بيحضّر للشغل أو الـAusbildung أو السفر والدراسة في ألمانيا.
+                </p>
+
+                <p>
+                    طريقتي في الشرح تعتمد على التفاعل والتطبيق العملي،
+                    لأن هدفي مش إنك تحفظ الألماني، لكن إنك تتكلمه بثقة
+                    وتستخدمه في حياتك فعلاً.
+                </p>
+
+                <div class="instructor-quote">
+                    الألماني مش صعب… لما تتعلمه بالطريقة الصح. 🚀🇩🇪
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
         <!-- LEVELS -->
         <section id="levels">
             <div class="container">

@@ -2341,7 +2341,7 @@ body.dark-mode .quick-info > div {
 body.dark-mode .quick-info > div strong,
 body.dark-mode .quick-info > div span {
     color: #ffffff !important;
-}/* ===== PERFORMANCE TEST 2 ===== */
+}/* ===== LOWER PERFORMANCE AND MORE FLEIBALITY ===== */
 
 /* إلغاء الـ smooth scroll */
 html {
@@ -2387,6 +2387,14 @@ body::after {
 body::before {
     background-attachment: scroll !important;
     opacity: .12 !important;
+}.fixed-whatsapp {
+    transition: box-shadow .25s ease, opacity .25s ease, filter .25s ease !important;
+}
+
+.fixed-whatsapp:hover {
+    box-shadow: 0 8px 25px rgba(216,168,62,.35) !important;
+    opacity: .96 !important;
+    filter: brightness(1.08) !important;
 }
 </style>
 

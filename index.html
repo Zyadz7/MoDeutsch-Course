@@ -2341,35 +2341,52 @@ body.dark-mode .quick-info > div {
 body.dark-mode .quick-info > div strong,
 body.dark-mode .quick-info > div span {
     color: #ffffff !important;
-}/* ===== PERFORMANCE TEST ===== */
+}/* ===== PERFORMANCE TEST 2 ===== */
 
-/* تخفيف الخلفية الثابتة */
+/* إلغاء الـ smooth scroll */
+html {
+    scroll-behavior: auto !important;
+}
+
+/* إلغاء تأثيرات الـ hover الثقيلة */
+.level-card,
+.level-card img,
+.germany-visual img {
+    transition: none !important;
+}
+
+/* إلغاء تحريك الكروت والصور */
+.level-card:hover {
+    transform: none !important;
+}
+
+.level-card:hover img,
+.germany-visual:hover img {
+    transform: none !important;
+    filter: none !important;
+}
+
+/* إلغاء الـ blur بالكامل للتجربة */
+.navbar,
+.quick-info div {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* تخفيف الظلال */
+.level-card,
+.quick-info div {
+    box-shadow: 0 8px 20px rgba(0,0,0,.20) !important;
+}
+
+/* إلغاء المؤثرات الزائدة في الخلفية */
+body::after {
+    display: none !important;
+}
+
 body::before {
     background-attachment: scroll !important;
-    opacity: .20 !important;
-}
-
-/* تخفيف الـ blur */
-.navbar {
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-}
-
-/* تخفيف الظلال الثقيلة */
-.level-card {
-    box-shadow: 0 12px 35px rgba(0,0,0,.30) !important;
-}
-
-/* Hover أخف */
-.level-card:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 18px 45px rgba(0,0,0,.35) !important;
-}
-
-/* منع المتصفح من عمل انتقالات ثقيلة جدًا */
-.level-card,
-.level-card img {
-    will-change: auto !important;
+    opacity: .12 !important;
 }
 </style>
 

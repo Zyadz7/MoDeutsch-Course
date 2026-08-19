@@ -2395,12 +2395,228 @@ body::before {
     box-shadow: 0 8px 25px rgba(216,168,62,.35) !important;
     opacity: .96 !important;
     filter: brightness(1.08) !important;
+}/* =========================================
+   SALAWAT CINEMATIC INTRO
+   ========================================= */
+
+#salawatIntro {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(101, 21, 38, 0.92),
+            rgba(35, 8, 15, 0.98) 65%,
+            #120508 100%
+        );
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
+    overflow: hidden;
+}
+
+/* اللمعة الذهبية */
+.salawat-glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(216, 168, 62, 0.20),
+        transparent 68%
+    );
+
+    filter: blur(15px);
+
+    animation: salawatGlow 3s ease-in-out infinite alternate;
+}
+
+/* المحتوى */
+.salawat-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 30px;
+
+    animation: salawatContent 1.4s ease forwards;
+}
+
+/* الخطوط الذهبية */
+.salawat-line {
+    width: 90px;
+    height: 1px;
+
+    margin: 18px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d8a83e,
+        transparent
+    );
+
+    opacity: .8;
+}
+
+/* الجملة الرئيسية */
+.salawat-text {
+    color: #f3d27b;
+
+    font-size: clamp(30px, 5vw, 52px);
+
+    font-weight: 900;
+
+    letter-spacing: .5px;
+
+    text-shadow:
+        0 0 15px rgba(216, 168, 62, .25),
+        0 5px 30px rgba(0,0,0,.6);
+}
+
+/* الجملة الصغيرة */
+.salawat-subtitle {
+    margin-top: 12px;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: clamp(13px, 2vw, 17px);
+
+    letter-spacing: .4px;
+}
+
+/* اختفاء الـ intro */
+#salawatIntro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* حركة الظهور */
+@keyframes salawatContent {
+
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* حركة اللمعة */
+@keyframes salawatGlow {
+
+    0% {
+        transform: scale(.85);
+        opacity: .45;
+    }
+
+    100% {
+        transform: scale(1.15);
+        opacity: .85;
+    }
+
+}
+
+/* موبايل */
+@media (max-width: 600px) {
+
+    .salawat-content {
+        width: 90%;
+    }
+
+    .salawat-text {
+        font-size: 30px;
+    }
+
+    .salawat-subtitle {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+}.dhikr-card {
+    width: min(850px, 92%);
+    margin: 30px auto;
+
+    padding: 22px 25px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.72);
+
+    border: 1px solid rgba(185,130,32,.25);
+
+    box-shadow:
+        0 15px 40px rgba(75,25,35,.08);
+
+    backdrop-filter: blur(10px);
+}
+
+.dhikr-card .dhikr-text {
+    color: #651526;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 2;
+}
+
+.dhikr-card .dhikr-label {
+    margin-top: 7px;
+
+    color: #b98220;
+
+    font-size: 11px;
+
+    font-weight: 700;
 }
 </style>
 
 </head>
 
 <body>
+
+    <!-- ===== SALAWAT INTRO ===== -->
+<div id="salawatIntro">
+    <div class="salawat-glow"></div>
+
+    <div class="salawat-content">
+        <div class="salawat-line"></div>
+
+        <div class="salawat-text">
+            صلِّ على رسول الله ﷺ
+        </div>
+
+        <div class="salawat-subtitle">
+            اللهم صلِّ وسلم وبارك على نبينا محمد
+        </div>
+
+        <div class="salawat-line"></div>
+    </div>
+</div>
 
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -2689,6 +2905,17 @@ body::before {
 
             </div>
         </section>
+        <div class="dhikr-card">
+
+    <div class="dhikr-text">
+        اللهم زدنا علمًا
+    </div>
+
+    <div class="dhikr-label">
+        دعاء
+    </div>
+
+</div>
 
 
         <!-- GERMANY GALLERY -->
@@ -3040,6 +3267,23 @@ themeToggle.addEventListener("click", () => {
     }
     <!-- update -->
 });
+</script>
+<script>
+    // إخفاء رسالة الصلاة بعد 3 ثوانٍ
+    window.addEventListener("load", function () {
+
+        setTimeout(function () {
+
+            const salawatIntro =
+                document.getElementById("salawatIntro");
+
+            if (salawatIntro) {
+                salawatIntro.classList.add("hide");
+            }
+
+        }, 3000);
+
+    });
 </script>
 </body>
 </html>

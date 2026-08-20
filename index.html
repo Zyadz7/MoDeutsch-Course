@@ -2817,6 +2817,31 @@ a.btn:active,
 .level-card:active,
 .theme-toggle:active {
     transform: scale(.98);
+}/* =========================================
+   SMOOTH GPU RENDERING
+========================================= */
+
+.level-card,
+.level-card img,
+.germany-visual img,
+.btn,
+.theme-toggle,
+.fixed-whatsapp {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.level-card,
+.level-card img,
+.germany-visual img {
+    will-change: transform;
+}
+
+.btn,
+.theme-toggle,
+.fixed-whatsapp {
+    will-change: transform;
 }
 </style>
 

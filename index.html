@@ -2345,7 +2345,7 @@ body.dark-mode .quick-info > div span {
 
 /* إلغاء الـ smooth scroll */
 html {
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth !important;
 }
 
 /* إلغاء تأثيرات الـ hover الثقيلة */
@@ -2592,12 +2592,238 @@ body::before {
     font-size: 11px;
 
     font-weight: 700;
+ } /* =========================================
+   PREMIUM WHITE GLASS BACKGROUND - TEST
+========================================= */
+
+body {
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.94) 0%,
+            rgba(255,255,255,.82) 45%,
+            rgba(255,250,245,.88) 100%
+        ) !important;
+
+    background-color: #fff;
+
+    color: #4b1824;
+}
+
+/* الحفاظ على صور وخلفيات الموقع */
+body::before {
+    opacity: .16;
+}
+
+body::after {
+    opacity: .22;
+}/* =========================================
+   DARK MODE - ELEGANT CHARCOAL
+========================================= */
+
+body.dark-mode {
+    background: #171719 !important;
+    color: #f4f1ed !important;
+}
+
+/* صورة الخلفية */
+body.dark-mode::before {
+    display: block !important;
+    opacity: 1 !important;
+
+    background:
+        linear-gradient(
+            rgba(20, 20, 22, 0.68),
+            rgba(20, 20, 22, 0.78)
+        ),
+        url("https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=2200&q=85")
+        center / cover no-repeat !important;
+
+    filter: saturate(0.75) brightness(0.82);
+}
+
+/* إضاءة خفيفة جدًا */
+body.dark-mode::after {
+    display: block !important;
+    content: "" !important;
+
+    position: fixed !important;
+    inset: 0 !important;
+
+    z-index: -1 !important;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(216,168,62,.06),
+            transparent 42%
+        ) !important;
+
+    opacity: 1 !important;
+}
+
+/* نخلي الأقسام شفافة */
+body.dark-mode .section,
+body.dark-mode .hero-section {
+    background: transparent !important;
+}/* =========================================
+   DISABLE BACKGROUND ANIMATIONS
+========================================= */
+
+body {
+    animation: none !important;
+}
+
+body::before {
+    animation: none !important;
+    transform: none !important;
+}
+
+body::after {
+    animation: none !important;
+    transform: none !important;
+}/* =========================================
+   REMOVE EXTRA BERLIN BACKGROUND
+========================================= */
+
+body::before,
+body::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+}/* =========================================
+   PREMIUM BUTTON CLICK EFFECT
+========================================= */
+
+button,
+.btn,
+a.btn,
+.cta-button,
+.level-card,
+.theme-toggle {
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* نقطة اللمعة */
+.click-glow {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    background: var(--click-color);
+
+    box-shadow:
+        0 0 18px var(--click-color),
+        0 0 35px var(--click-color);
+
+    opacity: .45;
+
+    animation: clickGlow .55s ease-out forwards;
+
+    z-index: 999;
+}
+
+@keyframes clickGlow {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+        opacity: .45;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(14);
+        opacity: 0;
+    }
+
+}
+
+/* ضغطة بسيطة جدًا */
+button:active,
+.btn:active,
+a.btn:active,
+.cta-button:active,
+.level-card:active,
+.theme-toggle:active {
+
+    transform: scale(.98);
+
+}/* PREMIUM BUTTON CLICK EFFECT */
+
+button,
+.btn,
+a.btn,
+.cta-button,
+.level-card,
+.theme-toggle {
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.click-glow {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    background: var(--click-color);
+
+    box-shadow:
+        0 0 25px var(--click-color),
+        0 0 55px var(--click-color),
+        0 0 90px var(--click-color);
+
+    opacity: .75;
+
+    animation: clickGlow .65s ease-out forwards;
+
+    z-index: 999;
+}
+
+@keyframes clickGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: .8;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(18);
+        opacity: 0;
+    }
+}
+
+button:active,
+.btn:active,
+a.btn:active,
+.cta-button:active,
+.level-card:active,
+.theme-toggle:active {
+    transform: scale(.98);
 }
 </style>
 
 </head>
 
 <body>
+   
 
     <!-- ===== SALAWAT INTRO ===== -->
 <div id="salawatIntro">
@@ -3284,6 +3510,99 @@ themeToggle.addEventListener("click", () => {
         }, 1500);
 
     });
+</script>
+<script>
+/* =========================================
+   AUTOMATIC BUTTON COLOR GLOW
+========================================= */
+
+document.addEventListener("click", function (event) {
+
+    const element = event.target.closest(
+        "button, .btn, a.btn, .cta-button, .level-card, .theme-toggle"
+    );
+
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+
+    const glow = document.createElement("span");
+
+    glow.className = "click-glow";
+
+    /*
+       نحاول نجيب لون العنصر تلقائيًا
+    */
+    const color =
+        getComputedStyle(element).backgroundColor;
+
+    glow.style.setProperty(
+        "--click-color",
+        color !== "rgba(0, 0, 0, 0)"
+            ? color
+            : "#d8a83e"
+    );
+
+    /*
+       مكان الضغط بالظبط
+    */
+    glow.style.left =
+        (event.clientX - rect.left) + "px";
+
+    glow.style.top =
+        (event.clientY - rect.top) + "px";
+
+    element.appendChild(glow);
+
+    /*
+       نمسح التأثير بعد ما يخلص
+    */
+    setTimeout(function () {
+        glow.remove();
+    }, 600);
+
+});
+</script>
+<script>
+/* AUTOMATIC BUTTON COLOR GLOW */
+
+document.addEventListener("click", function (event) {
+
+    const element = event.target.closest(
+        "button, .btn, a.btn, .cta-button, .level-card, .theme-toggle"
+    );
+
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+
+    const glow = document.createElement("span");
+
+    glow.className = "click-glow";
+
+    const color =
+        getComputedStyle(element).backgroundColor;
+
+    glow.style.setProperty(
+        "--click-color",
+        color !== "rgba(0, 0, 0, 0)"
+            ? color
+            : "#d8a83e"
+    );
+
+    glow.style.left =
+        (event.clientX - rect.left) + "px";
+
+    glow.style.top =
+        (event.clientY - rect.top) + "px";
+
+    element.appendChild(glow);
+
+    setTimeout(function () {
+        glow.remove();
+    }, 700);
+
+});
 </script>
 </body>
 </html>

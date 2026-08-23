@@ -4881,7 +4881,7 @@ body.dark-mode .hero-text {
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <strong> كورسات الألماني A1 • A2 • B1 • B2 — محمد أشرف</strong>
+            <strong>كورسات الألماني A1 • A2 • B1 • B2 — محمد أشرف</strong>
 
             <div class="footer-links">
                 <a target="_blank" href="https://www.facebook.com/share/17krmCuS1M/">فيسبوك</a>
@@ -4947,7 +4947,7 @@ body.dark-mode .hero-text {
                     </select>
                 </label>
                 <label>
-    هل الجروب والمعاد مناسب معاك/ي؟
+    هل الجروب والميعاد مناسب معاك/ي؟
 
     <div style="margin-top:10px; display:flex; gap:20px; flex-wrap:wrap;">
 
@@ -5035,6 +5035,21 @@ document.getElementById('bookingOverlay').addEventListener('click', function(e) 
 <script>
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbyG8jKgNy2vKOnQNlQRDepta82oOawbLrvs0RHgl1cWF36xqhYi18AP8vVg1gq7hBYezg/exec";
 
+function showWalletPayment() {
+
+    const wallet =
+        document.getElementById("walletPayment");
+
+    if (!wallet) return;
+
+    wallet.style.display = "block";
+
+    wallet.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
 document.getElementById("bookingForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
@@ -5075,30 +5090,113 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         });
         if (scheduleSuitable === "نعم") {
 
-            document.getElementById("bookingContent").style.display = "none";
+    document.getElementById("bookingContent").style.display = "none";
 
-            document.getElementById("bookingSuccess").innerHTML = `
-                <div style="font-size:50px;">✅</div>
+    document.getElementById("bookingSuccess").innerHTML = `
 
-                <h3>تم تسجيل بياناتك بنجاح</h3>
+        <div style="font-size:50px;">✅</div>
 
-                <p>
-                    سيتم تحويلك الآن إلى InstaPay لإتمام الدفع.
-                </p>
+        <h3>تم تسجيل بياناتك بنجاح</h3>
 
-                <p style="color:#d8a83e;font-weight:bold">
-                    بعد التحويل، ابعت صورة التحويل على ماسنجر لتأكيد حجزك.
-                </p>
-            `;
+        <p>
+            متنساش تبعت Screenshot للتحويل على ماسنجر لتأكيد حجزك.
+        </p>
 
-            document.getElementById("bookingSuccess").classList.add("show");
+        <p style="
+            color:#d8a83e;
+            font-weight:bold;
+            margin-top:15px;
+        ">
+            اختار طريقة الدفع المناسبة ليك 👇
+        </p>
 
-            setTimeout(() => {
-                window.location.href =
-                    "https://ipn.eg/S/moashraf436/instapay/5wJaRY";
-            }, 2500);
 
-        } else {
+        <div style="
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+            margin-top:20px;
+        ">
+
+            <!-- InstaPay -->
+            <a
+                href="https://ipn.eg/S/moashraf436/instapay/5wJaRY"
+                target="_blank"
+                class="btn btn-gold"
+                style="
+                    text-decoration:none;
+                    text-align:center;
+                "
+            >
+                💳 الدفع عن طريق InstaPay
+            </a>
+
+
+            <!-- Orange Cash -->
+            <button
+                type="button"
+                class="btn btn-outline"
+                onclick="showWalletPayment()"
+            >
+                📱 الدفع عن طريق Orange Cash
+            </button>
+
+        </div>
+
+
+        <!-- Wallet Information -->
+        <div
+            id="walletPayment"
+            style="
+                display:none;
+                margin-top:20px;
+                padding:15px;
+                border-radius:18px;
+                background:rgba(255,255,255,.08);
+                border:1px solid rgba(216,168,62,.35);
+            "
+        >
+
+            <h3 style="margin-bottom:10px;">
+                📱 Orange Cash
+            </h3>
+
+            <img
+                src="images/orange-cash.jpg"
+                alt="Orange Cash"
+                style="
+                    width:100%;
+                    max-width:500px;
+                    border-radius:15px;
+                    display:block;
+                    margin:10px auto;
+                "
+            >
+
+            <p style="
+                font-size:20px;
+                font-weight:bold;
+                letter-spacing:1px;
+                margin:10px 0;
+            ">
+                01221480744
+            </p>
+
+            <p style="margin-bottom:0;">
+                بعد التحويل، ابعت Screenshot للتحويل على ماسنجر لتأكيد حجزك.
+            </p>
+
+        </div>
+
+    `;
+
+    document
+        .getElementById("bookingSuccess")
+        .classList.add("show");
+
+
+
+    } else {
 
             document.getElementById("bookingContent").style.display = "none";
             document.getElementById("bookingSuccess").classList.add("show");

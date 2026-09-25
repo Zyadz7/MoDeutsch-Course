@@ -4539,41 +4539,36 @@ body.dark-mode .hero-text {
 
     width: 100%;
 
-    aspect-ratio: 16 / 9;
-
     overflow: hidden;
 
     background: transparent;
 
-    border-radius: 22px;
+    border-radius: 22px 22px 0 0;
 }
-
 
 /* الصورة نفسها */
 
 .sprachcafe-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
 
     display: block;
 
-    object-fit: contain;
+    object-fit: unset;
 
     transition:
         transform 0.4s ease,
         filter 0.4s ease;
 }
 
-
 /* حركة بسيطة للصورة بدون تغيير مقاسها */
 
 .sprachcafe-card:hover
 .sprachcafe-image img {
-    transform: scale(1.02);
+    transform: scale(1.01);
 
     filter: brightness(1.04);
 }
-
 
 /* =========================================
    🌑 تدرج بسيط أسفل الصورة
@@ -4753,12 +4748,7 @@ body.dark-mode .hero-text {
        ومش بنغير الـaspect-ratio
     */
 
-    .sprachcafe-image {
-        width: 100%;
-
-        aspect-ratio: 16 / 9;
-    }
-
+   
 
     .sprachcafe-info {
         padding: 20px;
@@ -4962,48 +4952,48 @@ body.dark-mode .hero-text {
 
                 <div class="section-heading">
                     <div class="eyebrow">GERMAN LEVELS</div>
-                     <a
-    id="sprachcafeCard"
-    class="sprachcafe-card"
-    href="#"
-    target="_blank"
-    rel="noopener noreferrer"
->
-
-    <div class="sprachcafe-image">
-
-        <img
-            src="images/sprachcafe.jpeg"
-            alt="Sprachcafé"
+        <a
+            id="sprachcafeCard"
+            class="sprachcafe-card"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
         >
 
-        <div class="sprachcafe-overlay">
-            <span>WÖCHENTLICH</span>
-        </div>
+            <div class="sprachcafe-image">
 
-    </div>
+                <img
+                    src="images/sprachcafe.jpeg"
+                    alt="Sprachcafé"
+                >
 
+                <div class="sprachcafe-overlay">
+                    <span>WÖCHENTLICH</span>
+                </div>
 
-    <div class="sprachcafe-info">
-
-        <div>
-
-            <h2>Sprachcafé</h2>
-
-            <p>
-                Gemeinsam sprechen, kennenlernen & Spaß haben
-            </p>
-
-        </div>
+            </div>
 
 
-        <div class="sprachcafe-button">
-            Jetzt anmelden →
-        </div>
+            <div class="sprachcafe-info">
 
-    </div>
+                <div>
 
-</a>
+                    <h2>Sprachcafé</h2>
+
+                    <p>
+                        Gemeinsam sprechen, kennenlernen & Spaß haben
+                    </p>
+
+                </div>
+
+
+                <div class="sprachcafe-button">
+                    Jetzt anmelden →
+                </div>
+
+            </div>
+
+        </a>
                     <h2 class="section-title">اختار مستواك وابدأ رحلتك في الألمانية</h2>
                     <p class="section-description">
                         جميع المستويات من A1 إلى B2 بخطوات واضحة نحو الإتقان.

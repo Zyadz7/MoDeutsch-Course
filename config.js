@@ -1,5 +1,5 @@
 const sprachcafeConfig = {
-    status: "full",
+    status: "closed",
 
     bookingUrl: "https://forms.google.com/لينك-الفورم",
 

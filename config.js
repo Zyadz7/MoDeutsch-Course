@@ -1,6 +1,7 @@
-const SITE_CONFIG = {
-    sprachcafeEnabled: true,
+const sprachcafeConfig = {
+    bookingOpen: false,
 
-    sprachcafeLink:
-        "https://docs.google.com/forms/d/e//viewform"
+    bookingUrl: "https://forms.google.com/ضع-لينك-الفورم-هنا",
+
+    closedImage: "images/booking-closed.png"
 };

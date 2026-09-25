@@ -5229,21 +5229,18 @@ themeToggle.addEventListener("click", () => {
 });
 </script>
 <script>
-    // إخفاء رسالة الصلاة بعد 3 ثوانٍ
-    window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-        setTimeout(function () {
+    const salawatIntro = document.getElementById("salawatIntro");
 
-            const salawatIntro =
-                document.getElementById("salawatIntro");
+    if (!salawatIntro) return;
 
-            if (salawatIntro) {
-                salawatIntro.classList.add("hide");
-            }
+    setTimeout(function () {
+        salawatIntro.classList.add("hide");
+    }, 1500);
 
-        }, 1000); //10 Seconds
-
-    });
+});
+</script>
 </script>
 <script>
 /* =========================================

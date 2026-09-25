@@ -5809,26 +5809,26 @@ document.addEventListener("click", function(event) {
 <script src="config.js"></script>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-const sprachcafeCard =
-    document.getElementById("sprachcafeCard");
+    const card = document.getElementById("sprachcafeCard");
 
+    if (!card) {
+        console.error("Sprachcafé card not found!");
+        return;
+    }
 
-if (
-    SITE_CONFIG.sprachcafeEnabled &&
-    SITE_CONFIG.sprachcafeLink
-) {
+    if (SITE_CONFIG.sprachcafeEnabled === true) {
 
-    sprachcafeCard.href =
-        SITE_CONFIG.sprachcafeLink;
+        card.style.display = "block";
+        card.href = SITE_CONFIG.sprachcafeLink;
 
-} else {
+    } else {
 
-    sprachcafeCard.style.display =
-        "none";
+        card.style.display = "none";
+    }
 
-}
-
+});
 </script>
 </body>
 </html>

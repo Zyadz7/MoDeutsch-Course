@@ -4452,6 +4452,251 @@ body.dark-mode .hero-section{
 body.dark-mode .hero-text {
     color: #651526 !important;
     font-weight: 700;
+}/* =========================
+   Sprachcafé Card
+   ========================= */
+
+.sprachcafe-card {
+    width: 100%;
+    max-width: 760px;
+
+    margin: 35px auto;
+
+    display: block;
+
+    text-decoration: none;
+    color: inherit;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.sprachcafe-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   الصورة
+   ========================= */
+
+.sprachcafe-image {
+    position: relative;
+
+    width: 100%;
+
+    height: 360px;
+
+    overflow: hidden;
+}
+
+
+.sprachcafe-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.sprachcafe-card:hover
+.sprachcafe-image img {
+    transform: scale(1.05);
+}
+
+
+/* تدرج فوق الصورة */
+
+.sprachcafe-image::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 45%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.75),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* اسم Sprachcafé فوق الصورة */
+
+.sprachcafe-overlay {
+    position: absolute;
+
+    left: 28px;
+    bottom: 22px;
+
+    z-index: 2;
+}
+
+
+.sprachcafe-overlay span {
+    font-size: 34px;
+
+    font-weight: 800;
+
+    color: white;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================
+   الجزء السفلي
+   ========================= */
+
+.sprachcafe-info {
+    min-height: 110px;
+
+    padding: 22px 26px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.sprachcafe-info h2 {
+    margin: 0 0 7px;
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+
+.sprachcafe-info p {
+    margin: 0;
+
+    font-size: 16px;
+
+    opacity: 0.7;
+}
+
+
+/* زر الحجز */
+
+.sprachcafe-button {
+    flex-shrink: 0;
+
+    padding: 13px 20px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.sprachcafe-card:hover
+.sprachcafe-button {
+    background: rgba(255, 255, 255, 0.22);
+
+    transform: translateX(3px);
+}
+
+
+/* =========================
+   الموبايل
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .sprachcafe-card {
+        margin: 25px auto;
+
+        border-radius: 22px;
+    }
+
+
+    .sprachcafe-image {
+        height: 270px;
+    }
+
+
+    .sprachcafe-overlay {
+        left: 20px;
+        bottom: 18px;
+    }
+
+
+    .sprachcafe-overlay span {
+        font-size: 28px;
+    }
+
+
+    .sprachcafe-info {
+        padding: 18px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .sprachcafe-info h2 {
+        font-size: 24px;
+    }
+
+
+    .sprachcafe-button {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+    }
+
 }
 </style>
 
@@ -4815,7 +5060,39 @@ body.dark-mode .hero-text {
                 </div>
             </div>
         </section>
+            <a
+    id="sprachcafeCard"
+    class="sprachcafe-card"
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+>
 
+    <div class="sprachcafe-image">
+        <img
+            src="images/sprachcafe.jpg"
+            alt="Sprachcafé"
+        >
+
+        <div class="sprachcafe-overlay">
+            <span>Sprachcafé</span>
+        </div>
+    </div>
+
+    <div class="sprachcafe-info">
+
+        <div>
+            <h2>Sprachcafé</h2>
+            <p>Gemeinsam sprechen, kennenlernen & Spaß haben</p>
+        </div>
+
+        <div class="sprachcafe-button">
+            Jetzt anmelden →
+        </div>
+
+    </div>
+
+            </a>
         <!-- FAQ -->
         <section id="faq">
             <div class="container">
@@ -5528,6 +5805,30 @@ document.addEventListener("click", function(event) {
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
     
+</script>
+<script src="config.js"></script>
+
+<script>
+
+const sprachcafeCard =
+    document.getElementById("sprachcafeCard");
+
+
+if (
+    SITE_CONFIG.sprachcafeEnabled &&
+    SITE_CONFIG.sprachcafeLink
+) {
+
+    sprachcafeCard.href =
+        SITE_CONFIG.sprachcafeLink;
+
+} else {
+
+    sprachcafeCard.style.display =
+        "none";
+
+}
+
 </script>
 </body>
 </html>

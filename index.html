@@ -5932,24 +5932,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+</script>
 <script src="config.js"></script>
 
 <script>
-    const sprachcafeCard = document.getElementById("sprachcafeCard");
+    const sprachcafeCard =
+        document.getElementById("sprachcafeCard");
 
-    if (sprachcafeConfig.bookingOpen) {
+    if (sprachcafeConfig.status === "open") {
 
-        // الحجز مفتوح → افتح الفورم
-        sprachcafeCard.href = sprachcafeConfig.bookingUrl;
+        // 🟢 الحجز مفتوح
+        sprachcafeCard.href =
+            sprachcafeConfig.bookingUrl;
+
         sprachcafeCard.target = "_blank";
-        sprachcafeCard.rel = "noopener noreferrer";
+        sprachcafeCard.rel =
+            "noopener noreferrer";
+
+    } else if (sprachcafeConfig.status === "full") {
+
+        // 🔴 العدد اكتمل
+        sprachcafeCard.href =
+            sprachcafeConfig.fullImage;
+
+        sprachcafeCard.target = "_blank";
+        sprachcafeCard.rel =
+            "noopener noreferrer";
 
     } else {
 
-        // الحجز مقفول → افتح صورة "لسه الحجز مفتحش"
-        sprachcafeCard.href = sprachcafeConfig.closedImage;
+        // 🟡 الحجز لسه مفتحش
+        sprachcafeCard.href =
+            sprachcafeConfig.closedImage;
+
         sprachcafeCard.target = "_blank";
-        sprachcafeCard.rel = "noopener noreferrer";
+        sprachcafeCard.rel =
+            "noopener noreferrer";
     }
 </script>
 </body>

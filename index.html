@@ -4452,11 +4452,15 @@ body.dark-mode .hero-section{
 body.dark-mode .hero-text {
     color: #651526 !important;
     font-weight: 700;
-}/* =========================
-   Sprachcafé Card
-   ========================= */
+
+
+}/* =========================================
+   ☕ Sprachcafé Card
+   ========================================= */
 
 .sprachcafe-card {
+    position: relative;
+
     width: 100%;
     max-width: 760px;
 
@@ -4464,21 +4468,25 @@ body.dark-mode .hero-text {
 
     display: block;
 
+    overflow: hidden;
+
     text-decoration: none;
     color: inherit;
 
     border-radius: 28px;
 
-    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            #21182d 0%,
+            #35223f 50%,
+            #172536 100%
+        );
 
-    background: rgba(255, 255, 255, 0.10);
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 
     box-shadow:
-        0 15px 45px rgba(0, 0, 0, 0.25);
-
-    backdrop-filter: blur(10px);
+        0 18px 45px rgba(0, 0, 0, 0.25);
 
     transition:
         transform 0.3s ease,
@@ -4486,17 +4494,46 @@ body.dark-mode .hero-text {
 }
 
 
-.sprachcafe-card:hover {
-    transform: translateY(-7px);
+/* لمعة جمالية خفيفة */
 
-    box-shadow:
-        0 22px 55px rgba(0, 0, 0, 0.35);
+.sprachcafe-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -140px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    filter: blur(10px);
+
+    pointer-events: none;
+
+    z-index: 1;
 }
 
 
-/* =========================
-   الصورة
-   ========================= */
+/* Hover */
+
+.sprachcafe-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   📸 IMAGE
+   مهم: المقاسات دي هي اللي ظبطناها
+   ========================================= */
+
 .sprachcafe-image {
     position: relative;
 
@@ -4506,9 +4543,13 @@ body.dark-mode .hero-text {
 
     overflow: hidden;
 
+    background: transparent;
+
     border-radius: 22px;
 }
 
+
+/* الصورة نفسها */
 
 .sprachcafe-image img {
     width: 100%;
@@ -4519,17 +4560,24 @@ body.dark-mode .hero-text {
     object-fit: contain;
 
     transition:
-        transform 0.5s ease;
+        transform 0.4s ease,
+        filter 0.4s ease;
 }
 
+
+/* حركة بسيطة للصورة بدون تغيير مقاسها */
 
 .sprachcafe-card:hover
 .sprachcafe-image img {
-    transform: scale(1.05);
+    transform: scale(1.02);
+
+    filter: brightness(1.04);
 }
 
 
-/* تدرج فوق الصورة */
+/* =========================================
+   🌑 تدرج بسيط أسفل الصورة
+   ========================================= */
 
 .sprachcafe-image::after {
     content: "";
@@ -4540,12 +4588,12 @@ body.dark-mode .hero-text {
     right: 0;
     bottom: 0;
 
-    height: 45%;
+    height: 35%;
 
     background:
         linear-gradient(
             to top,
-            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.55),
             transparent
         );
 
@@ -4553,36 +4601,55 @@ body.dark-mode .hero-text {
 }
 
 
-/* اسم Sprachcafé فوق الصورة */
+/* =========================================
+   🏷️ Badge فوق الصورة
+   ========================================= */
 
 .sprachcafe-overlay {
     position: absolute;
 
-    left: 28px;
-    bottom: 22px;
+    left: 25px;
+    bottom: 20px;
 
-    z-index: 2;
+    z-index: 3;
 }
 
 
 .sprachcafe-overlay span {
-    font-size: 34px;
+    display: inline-block;
 
-    font-weight: 800;
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(8px);
 
     color: white;
 
-    text-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
 }
 
 
-/* =========================
-   الجزء السفلي
-   ========================= */
+/* =========================================
+   ✨ المعلومات تحت الصورة
+   ========================================= */
 
 .sprachcafe-info {
-    min-height: 110px;
+    position: relative;
+
+    z-index: 3;
+
+    min-height: 115px;
 
     padding: 22px 26px;
 
@@ -4596,58 +4663,81 @@ body.dark-mode .hero-text {
 }
 
 
+/* العنوان */
+
 .sprachcafe-info h2 {
     margin: 0 0 7px;
 
-    font-size: 28px;
+    font-size: 31px;
 
     font-weight: 800;
+
+    letter-spacing: -0.5px;
 }
 
+
+/* الوصف */
 
 .sprachcafe-info p {
     margin: 0;
 
-    font-size: 16px;
+    font-size: 15px;
 
-    opacity: 0.7;
+    line-height: 1.5;
+
+    opacity: 0.72;
 }
 
 
-/* زر الحجز */
+/* =========================================
+   🎟️ زر الحجز
+   ========================================= */
 
 .sprachcafe-button {
     flex-shrink: 0;
 
     padding: 13px 20px;
 
-    border-radius: 14px;
+    border-radius: 15px;
 
-    font-size: 16px;
+    color: white;
 
-    font-weight: 700;
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #ea580c
+        );
 
-    background: rgba(255, 255, 255, 0.14);
+    box-shadow:
+        0 8px 20px rgba(234, 88, 12, 0.25);
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 15px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
 
     transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
+
+/* حركة الزر */
 
 .sprachcafe-card:hover
 .sprachcafe-button {
-    background: rgba(255, 255, 255, 0.22);
+    transform: translateX(4px);
 
-    transform: translateX(3px);
+    box-shadow:
+        0 10px 26px rgba(234, 88, 12, 0.40);
 }
 
 
-/* =========================
-   الموبايل
-   ========================= */
+/* =========================================
+   📱 Mobile
+   ========================================= */
 
 @media (max-width: 600px) {
 
@@ -4658,35 +4748,31 @@ body.dark-mode .hero-text {
     }
 
 
+    /*
+       بنحافظ على نفس نسبة الصورة
+       ومش بنغير الـaspect-ratio
+    */
+
     .sprachcafe-image {
-        height: 270px;
-    }
+        width: 100%;
 
-
-    .sprachcafe-overlay {
-        left: 20px;
-        bottom: 18px;
-    }
-
-
-    .sprachcafe-overlay span {
-        font-size: 28px;
+        aspect-ratio: 16 / 9;
     }
 
 
     .sprachcafe-info {
-        padding: 18px;
-
-        align-items: flex-start;
+        padding: 20px;
 
         flex-direction: column;
 
-        gap: 15px;
+        align-items: stretch;
+
+        gap: 16px;
     }
 
 
     .sprachcafe-info h2 {
-        font-size: 24px;
+        font-size: 26px;
     }
 
 
@@ -4698,6 +4784,21 @@ body.dark-mode .hero-text {
         text-align: center;
     }
 
+
+    .sprachcafe-overlay {
+        left: 18px;
+        bottom: 18px;
+    }
+
+}.sprachcafe-info p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+
+    color: #FFD700;
+    opacity: 0.9;
+}.sprachcafe-info h2 {
+    color: #EA580C;
 }
 </style>
 
@@ -5061,7 +5162,7 @@ body.dark-mode .hero-text {
                 </div>
             </div>
         </section>
-            <a
+         <a
     id="sprachcafeCard"
     class="sprachcafe-card"
     href="#"
@@ -5070,22 +5171,31 @@ body.dark-mode .hero-text {
 >
 
     <div class="sprachcafe-image">
+
         <img
             src="images/sprachcafe.jpeg"
             alt="Sprachcafé"
         >
 
         <div class="sprachcafe-overlay">
-            <span>Sprachcafé</span>
+            <span>WÖCHENTLICH</span>
         </div>
+
     </div>
+
 
     <div class="sprachcafe-info">
 
         <div>
+
             <h2>Sprachcafé</h2>
-            <p>Gemeinsam sprechen, kennenlernen & Spaß haben</p>
+
+            <p>
+                Gemeinsam sprechen, kennenlernen & Spaß haben
+            </p>
+
         </div>
+
 
         <div class="sprachcafe-button">
             Jetzt anmelden →
@@ -5093,7 +5203,7 @@ body.dark-mode .hero-text {
 
     </div>
 
-            </a>
+</a>
         <!-- FAQ -->
         <section id="faq">
             <div class="container">

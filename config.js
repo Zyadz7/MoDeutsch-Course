@@ -1,5 +1,5 @@
 const sprachcafeConfig = {
-    bookingOpen: false,
+    bookingOpen: true,
 
     bookingUrl: "https://forms.google.com/",
 

@@ -1,7 +1,7 @@
 const sprachcafeConfig = {
-    status: "closed",
+    status: "open",
 
-    bookingUrl: "https://forms.google.com/لينك-الفورم",
+    bookingUrl: "https://forms.google.com/https://appt.apptrainings.com/r/eFwkYmzxW6cBrvUi",
 
     closedImage: "images/booking-closed.png",
 

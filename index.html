@@ -6355,7 +6355,120 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         button.disabled = false;
         button.textContent = "إرسال طلب الحجز";
     }
-});
+});document
+    .getElementById("sprachcafeBookingForm")
+    .addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        const name =
+            document.getElementById("sprachcafeName")
+                .value.trim();
+
+        const phone =
+            document.getElementById("sprachcafePhone")
+                .value.trim();
+
+        const level =
+            document.getElementById("sprachcafeLevel")
+                .value;
+
+        const paymentMethod =
+            document.querySelector(
+                'input[name="sprachcafePayment"]:checked'
+            )?.value;
+
+        const transactionId =
+            document.getElementById(
+                "sprachcafeTransactionId"
+            ).value.trim();
+
+
+        if (
+            !name ||
+            !phone ||
+            !level ||
+            !paymentMethod ||
+            !transactionId
+        ) {
+
+            alert("من فضلك أكمل جميع البيانات.");
+
+            return;
+        }
+
+
+        const button =
+            this.querySelector(".sprachcafe-submit");
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "جاري تسجيل الحجز...";
+
+
+        try {
+
+            await fetch(
+                sprachcafeConfig.booking.googleScriptUrl,
+                {
+                    method: "POST",
+
+                    mode: "no-cors",
+
+                    headers: {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        phone: phone,
+
+                        level: level,
+
+                        paymentMethod:
+                            paymentMethod,
+
+                        amount: 50,
+
+                        transactionId:
+                            transactionId
+
+                    })
+                }
+            );
+
+
+            this.style.display = "none";
+
+
+            document
+                .getElementById(
+                    "sprachcafeBookingSuccess"
+                )
+                .classList.add("show");
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "حصل خطأ أثناء إرسال الحجز. حاول مرة أخرى."
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "تأكيد الحجز والدفع";
+        }
+
+    });
 </script>
 <script>
 const themeToggle = document.getElementById("themeToggle");

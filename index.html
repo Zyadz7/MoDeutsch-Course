@@ -4789,6 +4789,482 @@ body.dark-mode .hero-text {
     opacity: 0.9;
 }.sprachcafe-info h2 {
     color: #EA580C;
+}/* =========================================
+   ☕ SPRACHCAFÉ BOOKING
+   مستقل تمامًا عن نظام الحجز الأساسي
+   ========================================= */
+
+.sprachcafe-booking-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,.82);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+.sprachcafe-booking-overlay.active {
+
+    display: flex;
+
+}
+
+
+.sprachcafe-booking-modal {
+
+    position: relative;
+
+    width: min(520px, 100%);
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            160deg,
+            #171014,
+            #0d090b
+        );
+
+    border:
+        1px solid rgba(216,168,62,.4);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+
+}
+
+
+.sprachcafe-booking-close {
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 15px;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+}
+
+
+.sprachcafe-booking-header {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+
+.sprachcafe-booking-icon {
+
+    width: 72px;
+
+    height: 72px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d8a83e,
+            #f3d27b
+        );
+
+    font-size: 34px;
+
+    box-shadow:
+        0 10px 35px rgba(216,168,62,.3);
+
+}
+
+
+.sprachcafe-booking-header h2 {
+
+    margin:
+        10px 0 4px;
+
+    color:
+        #f3d27b;
+
+    font-size:
+        30px;
+
+}
+
+
+.sprachcafe-booking-header p {
+
+    margin: 0;
+
+    color: #c8bec0;
+
+}
+
+
+/* EVENT */
+
+.sprachcafe-event-info {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 10px;
+
+}
+
+
+.sprachcafe-event-box {
+
+    padding: 15px 8px;
+
+    text-align: center;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(216,168,62,.22);
+
+}
+
+
+.sprachcafe-event-box span {
+
+    display: block;
+
+    font-size: 23px;
+
+}
+
+
+.sprachcafe-event-box strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: white;
+
+}
+
+
+.sprachcafe-event-box small {
+
+    color: #9f9497;
+
+}
+
+
+.sprachcafe-event-box.price {
+
+    background:
+        rgba(216,168,62,.1);
+
+    border-color:
+        rgba(216,168,62,.5);
+
+}
+
+
+.sprachcafe-event-box.price strong {
+
+    color:
+        #f3d27b;
+
+}
+
+
+.sprachcafe-booking-message {
+
+    margin:
+        18px 0;
+
+    padding: 12px;
+
+    text-align: center;
+
+    border-radius: 13px;
+
+    background:
+        rgba(216,168,62,.08);
+
+    color:
+        #ead9b5;
+
+}
+
+
+/* FORM */
+
+.sprachcafe-booking-form {
+
+    display: grid;
+
+    gap: 15px;
+
+}
+
+
+.sprachcafe-booking-form label {
+
+    color:
+        #e8dfe1;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+}
+
+
+.sprachcafe-booking-form input,
+.sprachcafe-booking-form select {
+
+    width: 100%;
+
+    margin-top: 7px;
+
+    padding: 13px;
+
+    box-sizing: border-box;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(255,255,255,.13);
+
+    background:
+        #0b0809;
+
+    color:
+        white;
+
+    outline: none;
+
+}
+
+
+.sprachcafe-booking-form input:focus,
+.sprachcafe-booking-form select:focus {
+
+    border-color:
+        rgba(216,168,62,.7);
+
+}
+
+
+/* PAYMENT */
+
+.sprachcafe-payment-title {
+
+    margin-top: 5px;
+
+    color:
+        #f3d27b;
+
+    font-weight:
+        800;
+
+}
+
+
+.sprachcafe-payment-methods {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+}
+
+
+.sprachcafe-payment-option {
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    cursor: pointer;
+
+    text-align: center;
+
+}
+
+
+.sprachcafe-payment-option input {
+
+    width: auto !important;
+
+    margin: 0 6px 0 0 !important;
+
+}
+
+
+.sprachcafe-payment-details {
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(216,168,62,.08);
+
+    border:
+        1px solid rgba(216,168,62,.2);
+
+    color:
+        #e8d9ba;
+
+    text-align: center;
+
+}
+
+
+.sprachcafe-consent {
+
+    font-weight: normal !important;
+
+}
+
+
+.sprachcafe-consent input {
+
+    width: auto !important;
+
+    margin-left: 7px;
+
+}
+
+
+.sprachcafe-submit {
+
+    width: 100%;
+
+}
+
+
+/* SUCCESS */
+
+.sprachcafe-booking-success {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 25px 10px;
+
+}
+
+
+.sprachcafe-booking-success.show {
+
+    display: block;
+
+}
+
+
+.sprachcafe-booking-success .success-icon {
+
+    font-size: 55px;
+
+}
+
+
+.sprachcafe-booking-success h3 {
+
+    color:
+        #f3d27b;
+
+}
+
+
+.sprachcafe-booking-success p {
+
+    color:
+        #c8bec0;
+
+}
+
+
+@media (max-width: 500px) {
+
+    .sprachcafe-booking-modal {
+
+        padding: 25px 18px;
+
+    }
+
+    .sprachcafe-event-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .sprachcafe-payment-methods {
+
+        grid-template-columns: 1fr;
+
+    }
+
 }
 </style>
 
@@ -4952,12 +5428,10 @@ body.dark-mode .hero-text {
 
                 <div class="section-heading">
                     <div class="eyebrow">GERMAN LEVELS</div>
-        <a
+                <a
             id="sprachcafeCard"
             class="sprachcafe-card"
             href="#"
-            target="_blank"
-            rel="noopener noreferrer"
         >
 
             <div class="sprachcafe-image">
@@ -5387,6 +5861,290 @@ body.dark-mode .hero-text {
         </div>
 
     </div>
+</div>
+  <!-- =========================================
+     ☕ SPRACHCAFÉ BOOKING MODAL
+     خاص بـ Sprachcafé فقط
+     ========================================= -->
+
+<div class="sprachcafe-booking-overlay" id="sprachcafeBookingOverlay">
+
+    <div class="sprachcafe-booking-modal">
+
+        <button
+            type="button"
+            class="sprachcafe-booking-close"
+            onclick="closeSprachcafeBooking()">
+            ×
+        </button>
+
+        <!-- HEADER -->
+
+        <div class="sprachcafe-booking-header">
+
+            <div class="sprachcafe-booking-icon">
+                ☕
+            </div>
+
+            <h2>Sprachcafé</h2>
+
+            <p>
+                Gemeinsam sprechen, kennenlernen & Spaß haben 🇩🇪
+            </p>
+
+        </div>
+
+
+        <!-- EVENT INFO -->
+
+        <div class="sprachcafe-event-info">
+
+            <div class="sprachcafe-event-box">
+
+                <span>📅</span>
+
+                <strong>الخميس</strong>
+
+                <small>موعد اللقاء</small>
+
+            </div>
+
+
+            <div class="sprachcafe-event-box">
+
+                <span>🕓</span>
+
+                <strong>4:00 مساءً</strong>
+
+                <small>وقت اللقاء</small>
+
+            </div>
+
+
+            <div class="sprachcafe-event-box price">
+
+                <span>💰</span>
+
+                <strong>50 جنيه</strong>
+
+                <small>سعر الحجز</small>
+
+            </div>
+
+        </div>
+
+
+        <div class="sprachcafe-booking-message">
+
+            ✨ العدد محدود — احجز مكانك الآن
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            id="sprachcafeBookingForm"
+            class="sprachcafe-booking-form"
+        >
+
+            <label>
+
+                الاسم بالكامل
+
+                <input
+                    type="text"
+                    id="sprachcafeName"
+                    required
+                    placeholder="اكتب اسمك بالكامل"
+                >
+
+            </label>
+
+
+            <label>
+
+                رقم WhatsApp
+
+                <input
+                    type="tel"
+                    id="sprachcafePhone"
+                    required
+                    placeholder="01xxxxxxxxx"
+                >
+
+            </label>
+
+
+            <label>
+
+                المستوى
+
+                <select
+                    id="sprachcafeLevel"
+                    required
+                >
+
+                    <option value="">
+                        اختر المستوى
+                    </option>
+
+                    <option value="A1">
+                        German A1
+                    </option>
+
+                    <option value="A2">
+                        German A2
+                    </option>
+
+                    <option value="B1">
+                        German B1
+                    </option>
+
+                    <option value="B2.1">
+                        German B2.1
+                    </option>
+
+                    <option value="B2">
+                        German B2
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <!-- PAYMENT -->
+
+            <div class="sprachcafe-payment-title">
+
+                💳 اختر طريقة الدفع
+
+            </div>
+
+
+            <div class="sprachcafe-payment-methods">
+
+                <label class="sprachcafe-payment-option">
+
+                    <input
+                        type="radio"
+                        name="sprachcafePayment"
+                        value="InstaPay"
+                        required
+                    >
+
+                    <span>
+                        💳 InstaPay
+                    </span>
+
+                </label>
+
+
+                <label class="sprachcafe-payment-option">
+
+                    <input
+                        type="radio"
+                        name="sprachcafePayment"
+                        value="Orange Cash"
+                        required
+                    >
+
+                    <span>
+                        📱 Orange Cash
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- PAYMENT DETAILS -->
+
+            <div
+                class="sprachcafe-payment-details"
+                id="sprachcafePaymentDetails"
+            >
+
+                <p>
+                    بعد اختيار طريقة الدفع، ستظهر لك بيانات التحويل هنا.
+                </p>
+
+            </div>
+
+
+            <!-- TRANSACTION ID -->
+
+            <label>
+
+                رقم العملية بعد الدفع
+
+                <input
+                    type="text"
+                    id="sprachcafeTransactionId"
+                    required
+                    placeholder="اكتب رقم العملية"
+                >
+
+            </label>
+
+
+            <label class="sprachcafe-consent">
+
+                <input
+                    type="checkbox"
+                    required
+                >
+
+                أوافق على استخدام بياناتي لتأكيد حجز Sprachcafé.
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="btn btn-gold sprachcafe-submit"
+            >
+
+                تأكيد الحجز والدفع
+
+            </button>
+
+        </form>
+
+
+        <!-- SUCCESS -->
+
+        <div
+            id="sprachcafeBookingSuccess"
+            class="sprachcafe-booking-success"
+        >
+
+            <div class="success-icon">
+                ✅
+            </div>
+
+            <h3>
+                تم إرسال طلب الحجز
+            </h3>
+
+            <p>
+                تم تسجيل بياناتك بنجاح.
+                سيتم مراجعة الدفع وتأكيد الحجز.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-gold"
+                onclick="closeSprachcafeBooking()"
+            >
+                إغلاق
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 <script>
 function openBooking(level = '') {
@@ -5936,39 +6694,159 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="config.js"></script>
 
 <script>
-    const sprachcafeCard =
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const card =
         document.getElementById("sprachcafeCard");
+
+    if (!card) return;
+
+
+    /* =====================================
+       🟢 OPEN
+       افتح نافذة Sprachcafé الخاصة فقط
+       ===================================== */
 
     if (sprachcafeConfig.status === "open") {
 
-        // 🟢 الحجز مفتوح
-        sprachcafeCard.href =
-            sprachcafeConfig.bookingUrl;
+        card.href = "#";
 
-        sprachcafeCard.target = "_blank";
-        sprachcafeCard.rel =
-            "noopener noreferrer";
+        card.removeAttribute("target");
 
-    } else if (sprachcafeConfig.status === "full") {
+        card.addEventListener("click", function (e) {
 
-        // 🔴 العدد اكتمل
-        sprachcafeCard.href =
+            e.preventDefault();
+
+            openSprachcafeBooking();
+
+        });
+
+    }
+
+
+    /* =====================================
+       🔴 FULL
+       ===================================== */
+
+    else if (sprachcafeConfig.status === "full") {
+
+        card.href =
             sprachcafeConfig.fullImage;
 
-        sprachcafeCard.target = "_blank";
-        sprachcafeCard.rel =
+        card.target = "_blank";
+
+        card.rel =
             "noopener noreferrer";
 
-    } else {
+    }
 
-        // 🟡 الحجز لسه مفتحش
-        sprachcafeCard.href =
+
+    /* =====================================
+       🟡 CLOSED
+       ===================================== */
+
+    else {
+
+        card.href =
             sprachcafeConfig.closedImage;
 
-        sprachcafeCard.target = "_blank";
-        sprachcafeCard.rel =
+        card.target = "_blank";
+
+        card.rel =
             "noopener noreferrer";
+
     }
+
+});
+
+
+
+/* =========================================
+   فتح نافذة Sprachcafé
+   ========================================= */
+
+function openSprachcafeBooking() {
+
+    const overlay =
+        document.getElementById(
+            "sprachcafeBookingOverlay"
+        );
+
+    const form =
+        document.getElementById(
+            "sprachcafeBookingForm"
+        );
+
+    const success =
+        document.getElementById(
+            "sprachcafeBookingSuccess"
+        );
+
+
+    if (!overlay) return;
+
+
+    overlay.classList.add("active");
+
+
+    if (form) {
+
+        form.style.display = "grid";
+
+        form.reset();
+
+    }
+
+
+    if (success) {
+
+        success.classList.remove("show");
+
+    }
+
+}
+
+
+/* =========================================
+   إغلاق نافذة Sprachcafé
+   ========================================= */
+
+function closeSprachcafeBooking() {
+
+    const overlay =
+        document.getElementById(
+            "sprachcafeBookingOverlay"
+        );
+
+    if (overlay) {
+
+        overlay.classList.remove("active");
+
+    }
+
+}
+
+
+/* إغلاق عند الضغط خارج النافذة */
+
+document.addEventListener("click", function (e) {
+
+    const overlay =
+        document.getElementById(
+            "sprachcafeBookingOverlay"
+        );
+
+    if (
+        overlay &&
+        e.target === overlay
+    ) {
+
+        closeSprachcafeBooking();
+
+    }
+
+});
 </script>
 </body>
 </html>

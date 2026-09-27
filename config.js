@@ -24,6 +24,6 @@ const sprachcafeConfig = {
             }
         },
 
-        googleScriptUrl: "https://script.google.com/macros/s/AKfycbxc5q8OkssvrlXjV8e008TxhrQuiYm4JK7lPzFFNX8_TS8LsB5w0FrT80GrPix0nSQoeA/exec"
+        googleScriptUrl: "https://script.google.com/macros/s/AKfycbxYdTmjXh7uFUMB-DSH14Ph-2nSDyGKS7o-PN3_yE1OiBetwqQfbOd6Tq-1zwSND4QyVA/exec"
     }
 };

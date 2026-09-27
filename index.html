@@ -6059,34 +6059,40 @@ body.dark-mode .hero-text {
             </div>
 
 
-            <!-- PAYMENT DETAILS -->
+              <!-- PAYMENT DETAILS -->
 
-            <div
-                class="sprachcafe-payment-details"
-                id="sprachcafePaymentDetails"
-            >
+<div
+    class="sprachcafe-payment-details"
+    id="sprachcafePaymentDetails"
+>
 
-                <p>
-                    بعد اختيار طريقة الدفع، ستظهر لك بيانات التحويل هنا.
-                </p>
+    <p>
+        اختر طريقة الدفع أولًا لإظهار بيانات التحويل.
+    </p>
 
-            </div>
+</div>
 
 
             <!-- TRANSACTION ID -->
 
-            <label>
+              <div
+    id="sprachcafeTransactionSection"
+    style="display:none;"
+>
 
-                رقم العملية بعد الدفع
+    <label>
 
-                <input
-                    type="text"
-                    id="sprachcafeTransactionId"
-                    required
-                    placeholder="اكتب رقم العملية"
-                >
+        رقم العملية بعد الدفع
 
-            </label>
+        <input
+            type="text"
+            id="sprachcafeTransactionId"
+            placeholder="اكتب رقم العملية بعد التحويل"
+        >
+
+    </label>
+
+            </div>
 
 
             <label class="sprachcafe-consent">
@@ -6847,6 +6853,146 @@ document.addEventListener("click", function (e) {
     }
 
 });
+</script>
+<script src="config.js"></script>
+
+<script>
+
+document.querySelectorAll(
+    'input[name="sprachcafePayment"]'
+).forEach(function (radio) {
+
+    radio.addEventListener("change", function () {
+
+        const details =
+            document.getElementById(
+                "sprachcafePaymentDetails"
+            );
+
+        const transactionSection =
+            document.getElementById(
+                "sprachcafeTransactionSection"
+            );
+
+        const transactionInput =
+            document.getElementById(
+                "sprachcafeTransactionId"
+            );
+
+
+        if (!details) return;
+
+
+        /* =========================
+           InstaPay
+           ========================= */
+
+        if (this.value === "InstaPay") {
+
+            details.innerHTML = `
+
+                <div style="text-align:center;">
+
+                    <h3 style="color:#f3d27b;">
+                        💳 الدفع عن طريق InstaPay
+                    </h3>
+
+                    <p>
+                        المبلغ المطلوب:
+                        <strong>50 جنيه</strong>
+                    </p>
+
+                    <a
+                        href="https://ipn.eg/S/moashraf436/instapay/5wJaRY"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-gold"
+                        style="
+                            display:block;
+                            text-align:center;
+                            text-decoration:none;
+                            margin-top:12px;
+                        "
+                    >
+                        💳 افتح InstaPay للدفع
+                    </a>
+
+                    <p style="font-size:12px;margin-top:12px;">
+                        بعد إتمام التحويل، ارجع إلى هذه الصفحة
+                        واكتب رقم العملية.
+                    </p>
+
+                </div>
+
+            `;
+
+            if (transactionSection) {
+                transactionSection.style.display = "block";
+            }
+
+            if (transactionInput) {
+                transactionInput.required = true;
+            }
+
+        }
+
+
+        /* =========================
+           Orange Cash
+           ========================= */
+
+        else if (this.value === "Orange Cash") {
+
+            details.innerHTML = `
+
+                <div style="text-align:center;">
+
+                    <h3 style="color:#f3d27b;">
+                        📱 الدفع عن طريق Orange Cash
+                    </h3>
+
+                    <p>
+                        المبلغ المطلوب:
+                        <strong>50 جنيه</strong>
+                    </p>
+
+                    <p>
+                        حوّل <strong>50 جنيه</strong> إلى:
+                    </p>
+
+                    <div style="
+                        font-size:23px;
+                        font-weight:900;
+                        color:#f3d27b;
+                        direction:ltr;
+                        margin:15px 0;
+                    ">
+                        01221480744
+                    </div>
+
+                    <p style="font-size:12px;">
+                        بعد إتمام التحويل، ارجع إلى هذه الصفحة
+                        واكتب رقم العملية.
+                    </p>
+
+                </div>
+
+            `;
+
+            if (transactionSection) {
+                transactionSection.style.display = "block";
+            }
+
+            if (transactionInput) {
+                transactionInput.required = true;
+            }
+
+        }
+
+    });
+
+});
+
 </script>
 </body>
 </html>

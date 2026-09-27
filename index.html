@@ -6073,26 +6073,50 @@ body.dark-mode .hero-text {
 </div>
 
 
-            <!-- TRANSACTION ID -->
+             <!-- PAYMENT SCREENSHOT -->
 
-              <div
-    id="sprachcafeTransactionSection"
+<div
+    id="sprachcafePaymentScreenshotSection"
     style="display:none;"
 >
 
     <label>
 
-        رقم العملية بعد الدفع
+        📸 إثبات الدفع
 
         <input
-            type="text"
-            id="sprachcafeTransactionId"
-            placeholder="اكتب رقم العملية بعد التحويل"
+            type="file"
+            id="sprachcafePaymentScreenshot"
+            accept="image/*"
         >
+
+        <small>
+            بعد إتمام التحويل، ارفع Screenshot لعملية الدفع.
+        </small>
 
     </label>
 
-            </div>
+    <div
+        id="sprachcafeScreenshotPreview"
+        style="display:none;margin-top:12px;"
+    >
+
+        <img
+            id="sprachcafeScreenshotImage"
+            src=""
+            alt="Payment screenshot"
+            style="
+                max-width:100%;
+                max-height:250px;
+                border-radius:12px;
+                display:block;
+                margin:auto;
+            "
+        >
+
+    </div>
+
+    </div>
 
 
             <label class="sprachcafe-consent">
@@ -6361,16 +6385,26 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 
         e.preventDefault();
 
+
+        // =========================================
+        // GET FORM DATA
+        // =========================================
+
         const name =
-            document.getElementById("sprachcafeName")
-                .value.trim();
+            document
+                .getElementById("sprachcafeName")
+                .value
+                .trim();
 
         const phone =
-            document.getElementById("sprachcafePhone")
-                .value.trim();
+            document
+                .getElementById("sprachcafePhone")
+                .value
+                .trim();
 
         const level =
-            document.getElementById("sprachcafeLevel")
+            document
+                .getElementById("sprachcafeLevel")
                 .value;
 
         const paymentMethod =
@@ -6378,95 +6412,180 @@ document.getElementById("bookingForm").addEventListener("submit", async function
                 'input[name="sprachcafePayment"]:checked'
             )?.value;
 
-        const transactionId =
-            document.getElementById(
-                "sprachcafeTransactionId"
-            ).value.trim();
 
+        // =========================================
+        // GET SCREENSHOT
+        // =========================================
+
+        const screenshotInput =
+            document.getElementById(
+                "sprachcafePaymentScreenshot"
+            );
+
+        const screenshotFile =
+            screenshotInput?.files?.[0];
+
+
+        // =========================================
+        // VALIDATE
+        // =========================================
 
         if (
             !name ||
             !phone ||
             !level ||
-            !paymentMethod ||
-            !transactionId
+            !paymentMethod
         ) {
 
-            alert("من فضلك أكمل جميع البيانات.");
+            alert(
+                "من فضلك أكمل جميع البيانات."
+            );
 
             return;
         }
 
 
+        if (!screenshotFile) {
+
+            alert(
+                "من فضلك ارفع Screenshot لإثبات الدفع أولًا."
+            );
+
+            return;
+        }
+
+
+        // =========================================
+        // BUTTON
+        // =========================================
+
         const button =
-            this.querySelector(".sprachcafe-submit");
+            this.querySelector(
+                ".sprachcafe-submit"
+            );
 
 
         button.disabled = true;
 
         button.textContent =
-            "جاري تسجيل الحجز...";
+            "جاري إرسال الحجز...";
 
 
-        try {
+        // =========================================
+        // READ IMAGE
+        // =========================================
 
-            await fetch(
-                sprachcafeConfig.booking.googleScriptUrl,
-                {
-                    method: "POST",
-
-                    mode: "no-cors",
-
-                    headers: {
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-                    },
-
-                    body: JSON.stringify({
-
-                        name: name,
-
-                        phone: phone,
-
-                        level: level,
-
-                        paymentMethod:
-                            paymentMethod,
-
-                        amount: 50,
-
-                        transactionId:
-                            transactionId
-
-                    })
-                }
-            );
+        const reader =
+            new FileReader();
 
 
-            this.style.display = "none";
+        reader.onload = async function () {
+
+            try {
+
+                const base64Image =
+                    reader.result.split(",")[1];
 
 
-            document
-                .getElementById(
-                    "sprachcafeBookingSuccess"
-                )
-                .classList.add("show");
+                // =================================
+                // SEND TO GOOGLE APPS SCRIPT
+                // =================================
+
+                await fetch(
+                    sprachcafeConfig
+                        .booking
+                        .googleScriptUrl,
+                    {
+
+                        method: "POST",
+
+                        mode: "no-cors",
+
+                        headers: {
+
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+
+                        },
+
+                        body: JSON.stringify({
+
+                            name: name,
+
+                            phone: phone,
+
+                            level: level,
+
+                            paymentMethod:
+                                paymentMethod,
+
+                            amount: 50,
 
 
-        } catch (error) {
+                            paymentScreenshot: {
 
-            console.error(error);
+                                name:
+                                    screenshotFile.name,
 
-            alert(
-                "حصل خطأ أثناء إرسال الحجز. حاول مرة أخرى."
-            );
+                                type:
+                                    screenshotFile.type,
+
+                                data:
+                                    base64Image
+
+                            }
+
+                        })
+
+                    }
+                );
 
 
-            button.disabled = false;
+                // =================================
+                // SUCCESS
+                // =================================
 
-            button.textContent =
-                "تأكيد الحجز والدفع";
-        }
+                document
+                    .getElementById(
+                        "sprachcafeBookingForm"
+                    )
+                    .style.display = "none";
+
+
+                document
+                    .getElementById(
+                        "sprachcafeBookingSuccess"
+                    )
+                    .classList.add("show");
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                alert(
+                    "حدث خطأ أثناء إرسال الحجز. حاول مرة أخرى."
+                );
+
+
+                button.disabled = false;
+
+                button.textContent =
+                    "تأكيد الحجز والدفع";
+
+            }
+
+        };
+
+
+        // =========================================
+        // START READING IMAGE
+        // =========================================
+
+        reader.readAsDataURL(
+            screenshotFile
+        );
 
     });
 </script>
@@ -7105,7 +7224,105 @@ document.querySelectorAll(
     });
 
 });
+// =========================================
+// SPRACHCAFÉ PAYMENT SCREENSHOT
+// =========================================
 
+const paymentRadios =
+    document.querySelectorAll(
+        'input[name="sprachcafePayment"]'
+    );
+
+const screenshotSection =
+    document.getElementById(
+        "sprachcafePaymentScreenshotSection"
+    );
+
+const screenshotInput =
+    document.getElementById(
+        "sprachcafePaymentScreenshot"
+    );
+
+const screenshotPreview =
+    document.getElementById(
+        "sprachcafeScreenshotPreview"
+    );
+
+const screenshotImage =
+    document.getElementById(
+        "sprachcafeScreenshotImage"
+    );
+
+
+// Show screenshot section after choosing payment
+paymentRadios.forEach(function (radio) {
+
+    radio.addEventListener("change", function () {
+
+        if (screenshotSection) {
+
+            screenshotSection.style.display =
+                "block";
+
+        }
+
+    });
+
+});
+
+
+// Preview selected screenshot
+if (screenshotInput) {
+
+    screenshotInput.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+            if (!file) {
+
+                screenshotPreview.style.display =
+                    "none";
+
+                return;
+            }
+
+
+            if (!file.type.startsWith("image/")) {
+
+                alert(
+                    "من فضلك اختر صورة فقط."
+                );
+
+                this.value = "";
+
+                return;
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload = function (event) {
+
+                screenshotImage.src =
+                    event.target.result;
+
+                screenshotPreview.style.display =
+                    "block";
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 const sprachcafeConfig = {
-    status: "open",
+    status: "closed",
 
     bookingUrl: "https://appt.apptrainings.com/r/eFwkYmzxW6cBrvUi",
 

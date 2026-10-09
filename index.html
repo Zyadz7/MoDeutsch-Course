@@ -6567,7 +6567,32 @@ footer::before {
 
 </div>
 <script>
+
+const COURSE_BOOKING_ENABLED = false;
+
+function updateCourseBookingButtons() {
+    document.querySelectorAll('button[onclick*="openBooking("]').forEach(button => {
+        if (!button.dataset.originalText) {
+            button.dataset.originalText = button.textContent;
+        }
+
+        button.disabled = !COURSE_BOOKING_ENABLED;
+
+        if (COURSE_BOOKING_ENABLED) {
+            button.textContent = button.dataset.originalText;
+            button.style.opacity = '';
+            button.style.cursor = '';
+        } else {
+            button.textContent = '⏳ الحجز مغلق مؤقتًا';
+            button.style.opacity = '0.6';
+            button.style.cursor = 'not-allowed';
+        }
+    });
+}
+
 function openBooking(level = '') {
+    if (!COURSE_BOOKING_ENABLED) return;
+
     const overlay = document.getElementById('bookingOverlay');
     const levelSelect = document.getElementById('bookingLevel');
 
@@ -6577,6 +6602,9 @@ function openBooking(level = '') {
         levelSelect.value = level;
     }
 }
+
+updateCourseBookingButtons();
+
 
 function closeBooking() {
     document.getElementById('bookingOverlay').classList.remove('active');

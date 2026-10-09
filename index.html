@@ -5266,6 +5266,396 @@ body.dark-mode .hero-text {
     }
 
 }
+/* ===== PREMIUM 3D BACKGROUND ===== */
+html {
+    scroll-behavior: smooth !important;
+    scroll-padding-top: 90px;
+}
+
+body {
+    isolation: isolate;
+}
+
+/* طبقة الخلفية */
+#ambient3D {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    perspective: 1000px;
+}
+
+
+
+
+/* إضاءة ناعمة على الأقسام */
+section {
+    position: relative;
+}
+
+section::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    left: -120px;
+    top: 15%;
+    border-radius: 50%;
+    background: rgba(216, 168, 62, 0.07);
+    filter: blur(75px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* شريط تقدم السكرول */
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 4px;
+    z-index: 10001;
+    background: linear-gradient(
+        90deg,
+        #8f3044,
+        #d8a83e,
+        #f3d27b
+    );
+    box-shadow: 0 0 12px rgba(216, 168, 62, 0.45);
+}
+
+/* ظهور العناصر تدريجيًا */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* تحسين شكل شريط التمرير */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #b68a32 #f4eee8;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #f4eee8;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(#d8a83e, #8f3044);
+    border-radius: 20px;
+    border: 2px solid #f4eee8;
+}
+
+@media (max-width: 768px) {
+    .ambient-orb {
+        opacity: 0.25;
+    }
+
+    .ambient-ring {
+        opacity: 0.45;
+    }
+
+    section::after {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient-orb,
+    .ambient-ring {
+        animation: none !important;
+    }
+
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    html {
+        scroll-behavior: auto !important;
+    }
+}
+/* ===== SOFT PREMIUM BACKGROUND ===== */
+
+body {
+    background-image:
+        radial-gradient(
+            ellipse at 8% 15%,
+            rgba(216, 168, 62, 0.10),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 92% 38%,
+            rgba(143, 48, 68, 0.07),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 45% 85%,
+            rgba(216, 168, 62, 0.07),
+            transparent 38%
+        );
+    background-attachment: fixed;
+}
+
+/* ضوء متحرك خفيف خلف محتوى الصفحة */
+#softAmbientLight {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#softAmbientLight::before {
+    content: "";
+    position: absolute;
+    width: 48vw;
+    height: 48vw;
+    min-width: 300px;
+    min-height: 300px;
+    top: 10%;
+    left: -15%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(216, 168, 62, 0.09),
+        rgba(216, 168, 62, 0.025) 45%,
+        transparent 70%
+    );
+    filter: blur(35px);
+    animation: softLightDrift 18s ease-in-out infinite alternate;
+}
+
+#softAmbientLight::after {
+    content: "";
+    position: absolute;
+    width: 42vw;
+    height: 42vw;
+    min-width: 280px;
+    min-height: 280px;
+    right: -12%;
+    bottom: 5%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(143, 48, 68, 0.07),
+        transparent 68%
+    );
+    filter: blur(40px);
+    animation: softLightDrift 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes softLightDrift {
+    from {
+        transform: translate3d(0, -15px, 0) scale(0.95);
+    }
+    to {
+        transform: translate3d(25px, 35px, 0) scale(1.08);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #softAmbientLight::before,
+    #softAmbientLight::after {
+        animation: none;
+    }
+}
+/* =========================================
+   MO DEUTSCH — PREMIUM UI UPGRADE
+========================================= */
+
+
+
+
+
+/* 3) BUTTONS: ارتفاع بسيط ولمعة هادئة */
+.btn,
+button.btn,
+a.btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.btn:hover,
+button.btn:hover,
+a.btn:hover {
+    filter: brightness(1.035);
+    box-shadow: 0 10px 25px rgba(185, 130, 32, 0.16);
+}
+
+.btn:active,
+button.btn:active,
+a.btn:active {
+    transform: translateY(1px) scale(0.99);
+}
+
+/* 4) LEVEL CARDS: لمسة 3D من غير حركة مبالغ فيها */
+.level-card {
+    transform: translateY(0);
+    transition:
+        transform 0.35s cubic-bezier(.2, .7, .2, 1),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+    box-shadow:
+        0 12px 30px rgba(49, 20, 27, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.level-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(216, 168, 62, 0.55) !important;
+    box-shadow:
+        0 22px 45px rgba(49, 20, 27, 0.14),
+        0 0 22px rgba(216, 168, 62, 0.08);
+}
+
+.level-landmark {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.level-landmark img {
+    transition: transform 0.55s ease;
+}
+
+.level-card:hover .level-landmark img {
+    transform: scale(1.035);
+}
+
+.level-badge {
+    box-shadow: 0 4px 14px rgba(185, 130, 32, 0.12);
+}
+
+/* 5) QUICK INFO: كروت معلومات أنظف */
+.quick-info > div {
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    border-color: rgba(216, 168, 62, 0.24);
+}
+
+.quick-info > div:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 168, 62, 0.45);
+    box-shadow: 0 15px 32px rgba(75, 25, 35, 0.10);
+}
+
+/* 6) SECTION HEADINGS: مسافات ووضوح */
+.section-heading {
+    position: relative;
+}
+
+.section-title {
+    text-wrap: balance;
+}
+
+.section-description {
+    line-height: 1.9;
+}
+
+/* 7) FOOTER: إضاءة خلفية خفيفة */
+footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 260px;
+    top: -140px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(216, 168, 62, 0.10);
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.footer-links a {
+    display: inline-block;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+/* 8) SCROLL REVEAL: حالة البداية */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 9) MOBILE: نحافظ على خفة الموقع */
+@media (max-width: 768px) {
+    .level-card:hover,
+    .quick-info > div:hover {
+        transform: none;
+    }
+
+    .hero-section h1 {
+        letter-spacing: 0;
+    }
+
+    .reveal-on-scroll {
+        transform: translateY(12px);
+        transition-duration: 0.45s;
+    }
+}
+
+/* احترام إعدادات تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .nav-links a,
+    .nav-links a::after,
+    .btn,
+    .level-card,
+    .level-landmark img,
+    .quick-info > div,
+    .footer-links a,
+    .reveal-on-scroll {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+}
 </style>
 
 </head>
@@ -7170,7 +7560,7 @@ document.querySelectorAll(
 
 
         /* =========================
-           Orange Cash
+           Orange Cash $$
            ========================= */
 
         else if (this.value === "Orange Cash") {
@@ -7323,6 +7713,160 @@ if (screenshotInput) {
     );
 
 }
+
+
+
+    // إنشاء الخلفية دون تعديل محتوى الصفحة
+    const ambient = document.createElement("div");
+    ambient.id = "ambient3D";
+    ambient.setAttribute("aria-hidden", "true");
+
+    const shapes = [
+        { type: "orb", size: "190px", left: "5%", top: "18%", duration: "9s" },
+        { type: "ring", size: "170px", left: "78%", top: "24%", duration: "12s" },
+        { type: "orb", size: "240px", left: "72%", top: "65%", duration: "11s" },
+        { type: "ring", size: "230px", left: "12%", top: "72%", duration: "14s" },
+        { type: "orb", size: "120px", left: "46%", top: "42%", duration: "8s" }
+    ];
+
+    shapes.forEach((shape) => {
+        const element = document.createElement("div");
+
+        element.className =
+            shape.type === "orb" ? "ambient-orb" : "ambient-ring";
+
+        element.style.setProperty("--size", shape.size);
+        element.style.setProperty("--left", shape.left);
+        element.style.setProperty("--top", shape.top);
+        element.style.setProperty("--duration", shape.duration);
+
+        ambient.appendChild(element);
+    });
+
+    document.body.prepend(ambient);
+
+    // شريط يوضح نسبة السكرول
+    const progress = document.createElement("div");
+    progress.id = "scrollProgress";
+    progress.setAttribute("aria-hidden", "true");
+    document.body.appendChild(progress);
+
+    let ticking = false;
+
+    function updateScroll() {
+        const scrollable =
+            document.documentElement.scrollHeight - window.innerHeight;
+
+        const percent = scrollable > 0
+            ? (window.scrollY / scrollable) * 100
+            : 0;
+
+        progress.style.width = `${percent}%`;
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    window.addEventListener("resize", updateScroll);
+    updateScroll();
+
+    // إظهار العناصر تدريجيًا أثناء النزول
+    const revealTargets = document.querySelectorAll(
+        "main section, .level-card, .quick-info > div"
+    );
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -35px 0px"
+        });
+
+        revealTargets.forEach((element) => {
+            if (!reduceMotion) {
+                element.classList.add("reveal-on-scroll");
+                observer.observe(element);
+            } else {
+                element.classList.add("is-visible");
+            }
+        });
+    } else {
+        revealTargets.forEach((element) => {
+            element.classList.add("is-visible");
+        });
+    }
+;
+</script>
+
+<script>
+if (!document.getElementById("softAmbientLight")) {
+    const softLight = document.createElement("div");
+    softLight.id = "softAmbientLight";
+    softLight.setAttribute("aria-hidden", "true");
+    document.body.prepend(softLight);
+}
+</script>
+
+<script>
+(() => {
+    // منع تكرار تشغيل التأثيرات لو السكريبت اتضاف مرتين
+    if (window.__moDeutschPremiumEffects) return;
+    window.__moDeutschPremiumEffects = true;
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    
+
+    // 2) ظهور العناصر تدريجيًا عند الوصول إليها
+    const revealTargets = document.querySelectorAll(
+        ".hero-content, .section-heading, .level-card, " +
+        ".quick-info > div, .final-cta, footer .container"
+    );
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealTargets.forEach((element) => {
+            element.classList.add("is-visible");
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -25px 0px"
+    });
+
+    revealTargets.forEach((element, index) => {
+        element.classList.add("reveal-on-scroll");
+
+        // تأخير بسيط ومتدرج للكروت المتجاورة
+        if (element.classList.contains("level-card")) {
+            element.style.transitionDelay =
+                `${(index % 4) * 70}ms`;
+        }
+
+        observer.observe(element);
+    });
+})();
 </script>
 </body>
 </html>

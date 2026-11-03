@@ -5655,6 +5655,50 @@ footer::before {
         opacity: 1;
         transform: none;
     }
+}/* ===== Diagonal Corner Ribbon ===== */
+
+.sprachcafe-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.sprachcafe-new-ribbon {
+    position: absolute;
+    top: 22px;
+    right: -43px;
+
+    width: 155px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: rotate(45deg);
+    transform-origin: center;
+
+    background: linear-gradient(
+        180deg,
+        #fff0b5 0%,
+        #e8bd5b 35%,
+        #bd8526 70%,
+        #f7df9a 100%
+    );
+
+    color: #651526;
+    font-size: 14px;
+    font-weight: 1000;
+    letter-spacing: 2px;
+
+    border-top: 1px solid #fff4ce;
+    border-bottom: 1px solid #956014;
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.25),
+        inset 0 1px 3px rgba(255,255,255,.5);
+
+    z-index: 30;
+    pointer-events: none;
 }
 </style>
 
@@ -5822,8 +5866,8 @@ footer::before {
             id="sprachcafeCard"
             class="sprachcafe-card"
             href="#"
-        >
-
+        >  
+        <span class="sprachcafe-new-ribbon">NEU</span>
             <div class="sprachcafe-image">
 
                 <img

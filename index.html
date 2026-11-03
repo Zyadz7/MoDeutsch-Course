@@ -5699,6 +5699,24 @@ footer::before {
 
     z-index: 30;
     pointer-events: none;
+}.dm-logo-image{
+  display:block;width:62px;height:62px;object-fit:contain;
+  border-radius:50%;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))
+}/* ===== Developer credit ===== */
+.dev-credit{
+  width:min(320px,80%);
+  margin:16px auto 0;
+  padding-top:14px;
+  border-top:1px solid rgba(243,223,177,.22);
+  font-size:13px;
+  letter-spacing:.12em;
+  color:rgba(245,223,170,.7);
+}
+.dev-credit strong{
+  color:var(--gold2);
+  font-weight:700;
+  letter-spacing:.16em;
 }
 </style>
 
@@ -6179,6 +6197,7 @@ footer::before {
             </div>
 
             <small>© 2026 جميع الحقوق محفوظة</small>
+            <div class="dev-credit" dir="ltr">Developed by <strong>ZY AD ALY</strong></div>
         </div>
     </footer>
 

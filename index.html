@@ -5943,8 +5943,8 @@ footer::before {
                         <div class="level-price">4,200 <small>جنيه</small></div>
 
                         <div class="level-info">
-                            <div><span>📅 الأيام</span><strong>الإثنين والخميس</strong></div>
-                            <div><span>🕐 الساعة (صباحي)</span><strong>12:00 ظهرًا</strong></div>
+                            <div><span>📅 الأيام</span><strong>الثلاثاء والجمعة</strong></div>
+                            <div><span>🕐 الساعة (مسائي)</span><strong>6:00 مساءً</strong></div>
                             <div><span>🕐 الساعة (مسائي)</span><strong>6:00 مساءً</strong></div>
 
                             <div><span>⏳ المدة</span><strong>حوالي 3 شهور</strong></div>
@@ -6626,58 +6626,70 @@ footer::before {
 
     </div>
 
-</div>
- <!-- CLOSE BOOKING -->
+<!-- CLOSE BOOKING -->
 <script>
-     
-const COURSE_BOOKING_ENABLED = false;
+
+const OPEN_COURSE_LEVELS = ["A1"];
 
 function updateCourseBookingButtons() {
+
     document.querySelectorAll('button[onclick*="openBooking("]').forEach(button => {
+
+        const match = button.getAttribute("onclick").match(/openBooking\(['"]?([^'")]+)?['"]?\)/);
+        const level = match?.[1]?.trim() || "";
+
+        const isOpen = OPEN_COURSE_LEVELS.includes(level);
+
         if (!button.dataset.originalText) {
-            button.dataset.originalText = button.textContent;
+            button.dataset.originalText = button.textContent.trim();
         }
 
-        button.disabled = !COURSE_BOOKING_ENABLED;
+        button.disabled = !isOpen;
 
-        if (COURSE_BOOKING_ENABLED) {
+        if (isOpen) {
             button.textContent = button.dataset.originalText;
-            button.style.opacity = '';
-            button.style.cursor = '';
+            button.style.opacity = "";
+            button.style.cursor = "";
         } else {
-            button.textContent = '⏳ الحجز مغلق مؤقتًا';
-            button.style.opacity = '0.6';
-            button.style.cursor = 'not-allowed';
+            button.textContent = "⏳ الحجز مغلق مؤقتًا";
+            button.style.opacity = "0.6";
+            button.style.cursor = "not-allowed";
         }
+
     });
+
 }
 
-function openBooking(level = '') {
-    if (!COURSE_BOOKING_ENABLED) return;
+function openBooking(level = "") {
 
-    const overlay = document.getElementById('bookingOverlay');
-    const levelSelect = document.getElementById('bookingLevel');
+    if (!OPEN_COURSE_LEVELS.includes(level)) return;
 
-    overlay.classList.add('active');
+    const overlay = document.getElementById("bookingOverlay");
+    const levelSelect = document.getElementById("bookingLevel");
 
-    if (level) {
-        levelSelect.value = level;
-    }
+    if (!overlay || !levelSelect) return;
+
+    levelSelect.value = level;
+    overlay.classList.add("active");
+
 }
 
 updateCourseBookingButtons();
 
 
 function closeBooking() {
-    document.getElementById('bookingOverlay').classList.remove('active');
+    document.getElementById("bookingOverlay").classList.remove("active");
 }
 
+
 // إغلاق الفورم عند الضغط خارج النافذة
-document.getElementById('bookingOverlay').addEventListener('click', function(e) {
+document.getElementById("bookingOverlay").addEventListener("click", function(e) {
     if (e.target === this) {
         closeBooking();
     }
 });
+
+</script>
 </script>
 <script>
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbyG8jKgNy2vKOnQNlQRDepta82oOawbLrvs0RHgl1cWF36xqhYi18AP8vVg1gq7hBYezg/exec";
